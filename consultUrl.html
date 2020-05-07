@@ -8,7 +8,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Consulta URL - SB Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
         crossorigin="anonymous"></script>
 </head>
@@ -75,6 +78,22 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
                                 </a></nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
+                            aria-expanded="false" aria-controls="collapseComp">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Empresas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseComp" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                </a>
+                                <a class="nav-link" href="consultComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                             aria-expanded="false" aria-controls="collapseUsers">
                             <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
@@ -84,8 +103,12 @@
                         <div class="collapse" id="collapseUsers" aria-labelledby="headingOne"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createProf.html">Creacion</a>
-                                <a class="nav-link" href="consultProf.html">Consultas</a></nav>
+                                <a class="nav-link" href="createProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                </a>
+                                <a class="nav-link" href="consultProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Reportes</div>
                         <a class="nav-link" href="charts.html">
@@ -119,7 +142,24 @@
                     <div class="card mb-4">
                         <div class="card-header colorLigas"><i class="fas fa-link"></i> Ligas cortas</div>
                         <div class="card-body">
-
+                            <div class="table-responsive">
+                                <table class='table table-bordered' id='ligasEmpresa' width='100%' cellspacing='0'>
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre Liga</th>
+                                            <th>Código Liga</th>
+                                            <th>Liga corta</th>
+                                            <th>Liga original</th>
+                                            <th>Fecha de creación</th>
+                                            <th>Fecha de modificación</th>
+                                            <th>Creador</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='bodyLigas'>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,6 +172,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/getLigas.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
 </body>

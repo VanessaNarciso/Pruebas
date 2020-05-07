@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Dashboard - ADMIN</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
         crossorigin="anonymous"></script>
 </head>
@@ -26,7 +25,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Ajustes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Cerrar sesión</a>
+                    <a class="dropdown-item"  id="btn_logout">Cerrar sesión</a>
                 </div>
             </li>
         </ul>
@@ -75,6 +74,22 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
                                 </a></nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
+                            aria-expanded="false" aria-controls="collapseComp">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Empresas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseComp" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                </a>
+                                <a class="nav-link" href="consultComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                             aria-expanded="false" aria-controls="collapseUsers">
                             <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
@@ -84,8 +99,12 @@
                         <div class="collapse" id="collapseUsers" aria-labelledby="headingOne"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createProf.html">Creacion</a>
-                                <a class="nav-link" href="consultProf.html">Consultas</a></nav>
+                                <a class="nav-link" href="createProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                </a>
+                                <a class="nav-link" href="consultProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Reportes</div>
                         <a class="nav-link" href="charts.html">
@@ -107,6 +126,7 @@
             <main>
                 <div class="container-fluid">
                     <h1 class="mt-4">Dashboard Inicial</h1>
+                    <h1 id="NameEmpresa" style="color: blue;">Name</h1>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card mb-4">
@@ -214,6 +234,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/logout.js" type="text/javascript" ></script>
+    <script src="js/dashboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
