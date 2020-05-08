@@ -1,6 +1,6 @@
 function getLigasComp() {    
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/liga/'+window.localStorage.empresaId,      
+        url: 'https://ligascortas.herokuapp.com/ligas/'+window.localStorage.empresaId,      
         headers: {
             'Content-Type':'application/json'
         },
