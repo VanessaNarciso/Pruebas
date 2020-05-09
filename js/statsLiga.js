@@ -21,7 +21,7 @@ function getLigasComp() {
                         </tr>
                 `);
           }
-          var t2 = $('#ligaVis').DataTable({
+          var t2 = $('#ligasEmpresa').DataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ ligas por página",
                 "zeroRecords": "No hay ligas para mostrar",
