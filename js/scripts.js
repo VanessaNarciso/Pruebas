@@ -23,12 +23,3 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
-
-function checkLog(){
-    if(!window.localStorage.token){
-        alert('Intruso');
-        window.location = 'login.html';
-    }
-}
-
-window.onload = checkLog
