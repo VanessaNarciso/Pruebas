@@ -48,7 +48,8 @@ function getLigasComp() {
             'Content-Type':'application/json'
         },
         method: 'GET',
-        success: function(data){            
+        success: function(data){     
+            console.log(data)       
             $('#inputName').val(data.nombreLiga)
             $('#inputLigaCorta').val(data.codigoLiga)            
             $('#inputURL').val(data.ligaOriginal)
