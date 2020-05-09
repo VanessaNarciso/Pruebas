@@ -1,8 +1,4 @@
 function getLigasComp() {    
-    if(!window.localStorage.token){
-      alert('Inicia sesión para ver la página');
-      window.location = 'login.html';
-    }
     $.ajax({
         url: 'https://ligascortas.herokuapp.com/ligas/'+window.localStorage.empresaId,      
         headers: {

@@ -23,3 +23,12 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
+
+function checkLog(){
+    if(!window.localStorage.token){
+        alert('Inicia sesión para ver la página');
+        window.location = 'login.html';
+    }
+}
+
+window.onload = checkLog
