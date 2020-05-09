@@ -15,7 +15,7 @@ function getLigasComp() {
           for (let i = 0; i < data.length; i++) {
             tabla.append(`                
                         <tr>                            
-                            <td><a class="nav-link" href="www.google.com">${data[i].nombreLiga}</a></td>
+                            <td><a class="nav-link" href="liga.html">${data[i].nombreLiga}</a></td>
                             <td>${data[i].codigoLiga}</td>
                             <td><a href="${data[i].ligaCorta}">${data[i].ligaCorta}</a></td>
                             <td><a href="${data[i].ligaOriginal}">${data[i].ligaOriginal}</a></td>
