@@ -1,6 +1,7 @@
 function getLigasComp() {
     ///////////////////////////// FALTA SABER QUE LIGA ////////////////////////////////
-    liga = '5eb4b19d69ca5a0017c102be'
+    let liga = '5eb4b19d69ca5a0017c102be'
+    let serverName = 'https://ligascortas.herokuapp.com'
     $.ajax({
         url: 'https://ligascortas.herokuapp.com/visitas/'+liga,      
         headers: {
@@ -37,8 +38,31 @@ function getLigasComp() {
         error: function(error_msg) {
           alert((error_msg["responseText"]))
         }
-      })
+    })
+
+
+    /////////////////////////  LLENAR FORM
+    $.ajax({
+        url: 'https://ligascortas.herokuapp.com/getLiga/'+liga,      
+        headers: {
+            'Content-Type':'application/json'
+        },
+        method: 'GET',
+        success: function(data){            
+            $('#inputName').val(data.nombreLiga)
+            $('#inputLigaCorta').val(data.codigoLiga)            
+            $('#inputURL').val(data.ligaOriginal)
+            $('#ligaCortaCompleta').val(data.ligaCorta)            
+        },
+        error: function(error_msg) {
+          alert((error_msg["responseText"]))
+        }
+    })
 }
+
+$('#inputLigaCorta').on('input', function(e){
+    $('#ligaCortaCompleta').val(serverName +'/liga/' +$('#inputLigaCorta').val());
+  })
 
 window.onload = getLigasComp;
   
