@@ -10,7 +10,10 @@ function getLigasComp() {
         success: function(data){
           let tabla = $("#bodyVisitas");
           $("#visitas").text(data.length);
+          let paisMay = data[i].geolocalizacion;
+          let navMay = data[i].geolocalizacion;
           $("#paisMax").text("Queti");
+          $("#navMax").text("mporta");
           for (let i = 0; i < data.length; i++) {
             tabla.append(`                
                         <tr>                            
