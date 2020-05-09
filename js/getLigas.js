@@ -10,8 +10,8 @@ function getLigasComp() {
           let tabla = $("#bodyLigas");          
           for (let i = 0; i < data.length; i++) {
             tabla.append(`                
-                        <tr>
-                            <td>${data[i].nombreLiga}</td>
+                        <tr>                            
+                            <td><a href='liga.html'>${data[i].nombreLiga}</a></td>
                             <td>${data[i].codigoLiga}</td>
                             <td><a href="${data[i].ligaCorta}">${data[i].ligaCorta}</a></td>
                             <td><a href="${data[i].ligaOriginal}">${data[i].ligaOriginal}</a></td>
