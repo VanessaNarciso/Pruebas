@@ -20,7 +20,7 @@ function getLigasComp() {
                         </tr>
                 `);
           }
-          var t1 = $('#ligasEmpresa').DataTable({
+          $('#ligasEmpresa').DataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ ligas por página",
                 "zeroRecords": "No hay ligas para mostrar",
