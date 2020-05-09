@@ -1,8 +1,8 @@
 let serverName = 'https://ligascortas.herokuapp.com'
+///////////////////////////// FALTA SABER QUE LIGA ////////////////////////////////
+let liga = '5eb4b19d69ca5a0017c102be' 
 
-function getLigasComp() {
-    ///////////////////////////// FALTA SABER QUE LIGA ////////////////////////////////
-    let liga = '5eb4b19d69ca5a0017c102be'    
+function getLigasComp() {       
     $.ajax({
         url: 'https://ligascortas.herokuapp.com/visitas/'+liga,      
         headers: {
@@ -12,10 +12,11 @@ function getLigasComp() {
         success: function(data){
           let tabla = $("#bodyVisitas");
           $("#visitas").text(data.length);
+          ///////////////////////////////////////    OBTENER LA MODA DEL ARREGLO DATA EN data.navegador y data.geolocalización
           let paisMay = data[0].geolocalizacion;
           let navMay = data[0].geolocalizacion;
-          $("#paisMax").text("Queti");
-          $("#navMax").text("mporta");
+          $("#paisMax").text(paisMay);
+          $("#navMax").text(navMay);
           for (let i = 0; i < data.length; i++) {
             tabla.append(`                
                         <tr>                            
@@ -61,6 +62,42 @@ function getLigasComp() {
         }
     })
 }
+
+//////////////////////////////////  GUARDAR CAMBIOS   /////////////////////////////////////////////////
+$('#create_button').on('click', function(){
+    // cargar datos del form    
+    let nombreLiga = $('#inputName').val()
+    let codigoLiga = $('#inputLigaCorta').val()
+    let ligaCorta = serverName+'/liga/'+codigoLiga
+    let ligaOriginal = $('#inputURL').val()
+  
+    json_to_send = {
+      "nombreLiga": nombreLiga,
+      "codigoLiga" : codigoLiga,
+      "ligaCorta" : ligaCorta,
+      "ligaOriginal" : ligaOriginal,
+      "fechaModificacion" : new Date()
+    };
+  
+    json_to_send = JSON.stringify(json_to_send)
+    console.log(json_to_send)
+    $.ajax({
+      url: serverName+'/updateLiga/'+liga,      
+      headers: {
+          'Content-Type':'application/json'
+      },
+      method: 'PUT',
+      dataType: 'json',
+      data: json_to_send,
+      success: function(data){
+        alert('Liga actualizada');
+        window.location = 'consultUrl.html'
+      },
+      error: function(error_msg) {
+        alert((error_msg["responseText"]))
+      }
+    })
+  })
 
 $('#inputLigaCorta').on('input', function(e){
     $('#ligaCortaCompleta').val(serverName +'/liga/' +$('#inputLigaCorta').val());
