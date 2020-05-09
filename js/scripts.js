@@ -26,7 +26,8 @@
 
 function checkLog(){
     if(!window.localStorage.token){
-        window.location = 'login.html'
+        alert('Intruso');
+        window.location = 'login.html';
     }
 }
 
