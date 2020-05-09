@@ -1,7 +1,8 @@
+let serverName = 'https://ligascortas.herokuapp.com'
+
 function getLigasComp() {
     ///////////////////////////// FALTA SABER QUE LIGA ////////////////////////////////
-    let liga = '5eb4b19d69ca5a0017c102be'
-    let serverName = 'https://ligascortas.herokuapp.com'
+    let liga = '5eb4b19d69ca5a0017c102be'    
     $.ajax({
         url: 'https://ligascortas.herokuapp.com/visitas/'+liga,      
         headers: {
