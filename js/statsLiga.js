@@ -9,7 +9,9 @@ function getLigasComp() {
         method: 'GET',
         success: function(data){
           console.log(data)
-          let tabla = $("#bodyLigas");          
+          let tabla = $("#bodyLigas");
+          $("#visitas").text(data.length);
+          $("#paisMax").text("Queti");
           for (let i = 0; i < data.length; i++) {
             tabla.append(`                
                         <tr>                            
