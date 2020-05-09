@@ -16,7 +16,7 @@
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Administración</a><button
+        <a class="navbar-brand" href="index.html" id = "usertype">Administración</a><button
             class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
                 class="fas fa-bars"></i></button>
         <!-- Navbar-->
@@ -54,7 +54,7 @@
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="createUrl.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
                                 </a>
                                 <a class="nav-link" href="consultUrl.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
@@ -70,13 +70,14 @@
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="createLanding.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
                                 </a>
                                 <a class="nav-link" href="consultLanding.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
                                 </a></nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
+                        <!-- toggle empresa -->
+                        <a id = "empresas" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
                             aria-expanded="false" aria-controls="collapseComp">
                             <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
                             Empresas
@@ -86,14 +87,16 @@
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="createComp.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
                                 </a>
                                 <a class="nav-link" href="consultComp.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
                                 </a></nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                        <!-- toggle perfiles-->
+                        <a id = "perfiles" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
                             aria-expanded="false" aria-controls="collapseUsers">
+                            
                             <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
                             Perfiles
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -102,7 +105,7 @@
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="createProf.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creacion
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
                                 </a>
                                 <a class="nav-link" href="consultProf.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
@@ -111,7 +114,7 @@
                         <div class="sb-sidenav-menu-heading">Reportes</div>
                         <a class="nav-link" href="charts.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Graficas
+                            Gráficas
                         </a>
                         <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -148,6 +151,7 @@
 
 
     </div>
+    <script src = "js/validacionusuario.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
