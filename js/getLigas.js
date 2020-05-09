@@ -21,7 +21,7 @@ function getLigasComp() {
                         </tr>
                 `);
           }
-          $('#ligasEmpresa').DataTable();
+          $('#ligaVis').DataTable();
         },
         error: function(error_msg) {
           alert((error_msg["responseText"]))
