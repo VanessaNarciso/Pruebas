@@ -8,7 +8,6 @@ function getLigasComp() {
         },
         method: 'GET',
         success: function(data){
-          console.log(data)
           let tabla = $("#bodyLigas");
           $("#visitas").text(data.length);
           $("#paisMax").text("Queti");
@@ -22,7 +21,15 @@ function getLigasComp() {
                         </tr>
                 `);
           }
-          $('#ligasEmpresa').DataTable();
+          $('#ligaVis').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ ligas por página",
+                "zeroRecords": "No hay ligas para mostrar",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "",
+                "infoFiltered": "(Buscando en _MAX_ ligas)"
+            }
+          });
         },
         error: function(error_msg) {
           alert((error_msg["responseText"]))
