@@ -58,9 +58,14 @@ function Last7Days () {
   for (var i=0; i<7; i++) {
       var d = new Date();
       d.setDate(d.getDate() - i);
-      result.push( d )
+      var dd = d.getDate();
+      var mm = d.getMonth()+1;
+      var yyyy = d.getFullYear();
+      if(dd<10) {dd='0'+dd}
+      if(mm<10) {mm='0'+mm}
+      date = dd+'/'+mm+'/'+yyyy;
+      result.push( date )
   }
-
   return(result.reverse());
 }
 
