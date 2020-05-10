@@ -53,12 +53,22 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
+function Last7Days () {
+  var result = [];
+  for (var i=0; i<7; i++) {
+      var d = new Date();
+      d.setDate(d.getDate() - i);
+      result.push( d )
+  }
+
+  return(result.reverse());
+}
 
 var ctx = document.getElementById("ligasSemana");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+    labels: Last7Days(),
     datasets: [{
       label: "Usos",
       lineTension: 0.3,
@@ -71,7 +81,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(247, 85, 120, 1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [25347, 84257, 12354, 52344, 62342, 86753, 35244, 42135, 45673, 74843, 62341, 31984, 38451],
+      data: [25347, 84257, 12354, 52344, 62342, 86753, 35244],
     }],
   },
   options: {
