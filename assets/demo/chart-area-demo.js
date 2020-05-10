@@ -69,47 +69,4 @@ function Last7Days () {
   return(result.reverse());
 }
 
-var ctx = document.getElementById("ligasSemana");
-var myLineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: Last7Days(),
-    datasets: [{
-      label: "Usos",
-      lineTension: 0.3,
-      backgroundColor: "rgba(247, 85, 120, 0.2)",
-      borderColor: "rgba(247, 85, 120, 1)",
-      pointRadius: 5,
-      pointBackgroundColor: "rgba(247, 85, 120, 1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(247, 85, 120, 1)",
-      pointHitRadius: 50,
-      pointBorderWidth: 2,
-      data: [2, 0, 3, 4, 5, 10, 30],
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 7
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          stacked : true
-        },
-        gridLines: {
-          color: "rgba(0, 0, 0, .125)",
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
+
