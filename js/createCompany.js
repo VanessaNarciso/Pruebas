@@ -1,3 +1,9 @@
+function validaTipo(){
+  if(window.localStorage.tipo > 0){
+    window.location = 'index.html'
+  }
+}
+
 $('#create_button').on('click', function(){
     // cargar datos del form    
     let name = $('#inputName').val()
@@ -35,3 +41,5 @@ $('#create_button').on('click', function(){
       }
     })
   })
+
+  window.onload = validaTipo;

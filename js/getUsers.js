@@ -1,6 +1,9 @@
 
 
 function getCompanies() {
+    if(window.localStorage.tipo > 1){
+        window.location = 'index.html'
+    }
     /*if(window.localStorage.tipo>0){
         alert("No permitido entrar");
         window.location = 'index.html';

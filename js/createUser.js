@@ -1,5 +1,11 @@
 const tipos = ['Admin Total','Admin empresa','Usuario empresa'];
 
+function validaTipo(){
+  if(window.localStorage.tipo > 1){
+    window.location = 'index.html'
+  }
+}
+
 var select = document.getElementById('inputTipo');
 for (var i = parseInt(window.localStorage.tipo); i < 3; i++) {
     var option = document.createElement("option");
@@ -45,3 +51,5 @@ $('#create_button').on('click', function(){
       }
     })
   })
+
+  window.onload = validaTipo;
