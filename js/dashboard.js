@@ -12,13 +12,24 @@ function getDatosDashboard(){
         },
         method: 'GET',
         success: function(data){     
-            console.log(data)
-            $('#totalesLigas').text(data.length)            
+            //console.log(data)
+            $('#totalesLigas').text(data.length)
+            ///////////////////////////////////////////////////////////////////   HOY CLICS LIGAS EMPRESA
+            now = new Date();                                                   //día de consulta a hora actual
+            hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
+            var clicsHoy = 0;
+            for(var i=0; i<data.length; i++){                
+                if(hoy < new Date(data[i].fecha)){
+                    clicsHoy +=1;
+                }
+            }
+            $('#ligasHoy').text(clicsHoy)
+
         },
         error: function(error_msg) {
           alert((error_msg["responseText"]))
         }
-    })
+    })    
 
 
     ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS
@@ -29,7 +40,7 @@ function getDatosDashboard(){
         },
         method: 'GET',
         success: function(data){     
-            console.log("Datos para grafica",data)
+            //console.log("Datos para grafica",data)
             // Bar Chart Example
             navs = [];
             visitas = [];
