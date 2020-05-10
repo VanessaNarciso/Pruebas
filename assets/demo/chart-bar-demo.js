@@ -4,7 +4,7 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 idE = window.localStorage.empresaId;
 
 
-function getDatosDashboard(){
+function getDatosGraph(){
   $.ajax({
       url: 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE,      
       headers: {
@@ -12,7 +12,7 @@ function getDatosDashboard(){
       },
       method: 'GET',
       success: function(data){     
-          console.log(data)
+          console.log("Datos para grafica",data)
           // Bar Chart Example
           navs = [];
           visitas = [];
@@ -69,4 +69,4 @@ function getDatosDashboard(){
   })
 }
 
-getDatosDashboard()
+window.onload = getDatosGraph;
