@@ -2,6 +2,17 @@ $('#NameEmpresa').text(window.localStorage.empresa);
 idE = window.localStorage.empresaId;
 tipo = window.localStorage.tipo;
 
+function Last7Days () {
+    var result = [];
+    for (var i=0; i<7; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        result.push( d )
+    }
+
+    return(result.reverse());
+}
+
 function getDatosDashboard(){
 
     ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
@@ -21,7 +32,7 @@ function getDatosDashboard(){
             for(var i=0; i<data.length; i++){
                 console.log("hoy es: ",hoy)
                 console.log("liga es de: ",new Date(data[i].fecha))
-                if(hoy < new Date(data[i].fecha)){
+                if(hoy < new Date(data[i].visita.fecha)){
                     console.log("si es de hoy")
                     clicsHoy = clicsHoy+1;
                 }
@@ -33,6 +44,9 @@ function getDatosDashboard(){
           alert((error_msg["responseText"]))
         }
     })    
+
+
+    ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
 
 
     ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS

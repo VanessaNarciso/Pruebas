@@ -54,7 +54,7 @@ var myLineChart = new Chart(ctx, {
 });
 
 
-var ctx = document.getElementById("myAreaChart2");
+var ctx = document.getElementById("ligasSemana");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
