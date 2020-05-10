@@ -70,7 +70,7 @@ function getDatosDashboard(){
                 }
                 semana.push(visitasDia);
             }
-            console.log(semana);
+            console.log("semana: ",semana);
 
         },
         error: function(error_msg) {
