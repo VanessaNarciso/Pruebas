@@ -51,22 +51,9 @@ function getDatosDashboard(){
               },
               options: {
                 scales: {
-                  xAxes: [{
-                    time: {
-                      unit: 'month'
-                    },
-                    gridLines: {
-                      display: false
-                    },
-                    ticks: {
-                      maxTicksLimit: 6
-                    }
-                  }],
                   yAxes: [{
                     ticks: {
-                      min: 0,
-                      max: Math.max.apply(this, data) + 50,
-                      maxTicksLimit: 5
+                      stacked : true
                     },
                     gridLines: {
                       display: true
