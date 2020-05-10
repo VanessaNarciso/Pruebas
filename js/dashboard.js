@@ -3,6 +3,33 @@ idE = window.localStorage.empresaId;
 tipo = window.localStorage.tipo;
 
 
+function Last7DaysUser () {
+    var result = [];
+    for (var i=0; i<7; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        var dd = d.getDate();
+        var mm = d.getMonth()+1;
+        var yyyy = d.getFullYear();
+        if(dd<10) {dd='0'+dd}
+        if(mm<10) {mm='0'+mm}
+        date = dd+'/'+mm+'/'+yyyy;
+        result.push( date )
+    }
+    return(result.reverse());
+}
+
+function Last7Days () {
+    var result = [];
+    for (var i=0; i<8; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        d = new Date(d.getFullYear(), d.getMonth(), d.getDate())
+        result.push( d )
+    }
+    return(result.reverse());
+}
+
 function getDatosDashboard(){
 
     ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
@@ -21,23 +48,35 @@ function getDatosDashboard(){
             var clicsHoy = 0;
             for(var i=0; i<data.length; i++){
                 console.log("hoy es: ",hoy)
-                console.log("liga es de: ",new Date(data[i].fecha))
+                console.log("liga es de: ",new Date(data[i].visita.fecha))
                 if(hoy < new Date(data[i].visita.fecha)){
                     console.log("si es de hoy")
                     clicsHoy = clicsHoy+1;
                 }
             }
             $('#ligasHoy').text(clicsHoy)
+            
+            ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
+            const week = Last7Days()
+            var j=0;
+            var semana = [];
+            for(var i=0; i<data.length; i++){
+                ant = week[i];
+                act = week[i+1];
+                visitasDia=0;
+                while(data[j]>ant && data[j]<act){
+                    visitasDia = visitasDia+1;
+                    j=j+1;
+                }
+                semana.push(visitasDia);
+            }
+            console.log(semana);
 
         },
         error: function(error_msg) {
           alert((error_msg["responseText"]))
         }
     })    
-
-
-    ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
-
 
     ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS
     $.ajax({
