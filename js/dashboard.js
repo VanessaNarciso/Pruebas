@@ -58,6 +58,7 @@ function getDatosDashboard(){
             
             ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
             const week = Last7Days()
+            console.log("week es: ",week);
             var j=0;
             var semana = [];
             for(var i=0; i<data.length; i++){
