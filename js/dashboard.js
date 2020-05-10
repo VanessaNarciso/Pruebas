@@ -69,6 +69,11 @@ function getDatosDashboard(){
               },
               options: {
                 scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                  }],  
                   yAxes: [{
                     ticks: {
                       stacked : true
