@@ -64,7 +64,7 @@ function getDatosDashboard(){
                 ant = week[i];
                 act = week[i+1];
                 visitasDia=0;
-                while(data[j]>ant && data[j]<act){
+                while(data[j].visita.fecha>ant && data[j].visita.fecha<act){
                     visitasDia = visitasDia+1;
                     j=j+1;
                 }
