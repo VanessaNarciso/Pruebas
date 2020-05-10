@@ -18,9 +18,12 @@ function getDatosDashboard(){
             now = new Date();                                                   //día de consulta a hora actual
             hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
             var clicsHoy = 0;
-            for(var i=0; i<data.length; i++){                
+            for(var i=0; i<data.length; i++){
+                console.log("hoy es: ",hoy)
+                console.log("liga es de: ",new Date(data[i].fecha))
                 if(hoy < new Date(data[i].fecha)){
-                    clicsHoy +=1;
+                    console.log("si es de hoy")
+                    clicsHoy = clicsHoy+1;
                 }
             }
             $('#ligasHoy').text(clicsHoy)
