@@ -69,4 +69,4 @@ function getDatosGraph(){
   })
 }
 
-window.onload = getDatosGraph;
+//window.onload = getDatosGraph;
