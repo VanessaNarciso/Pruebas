@@ -1,43 +1,30 @@
-function getProfile() {
-    /*if(window.localStorage.tipo>1){
-        window.location = 'index.html';
-    }*/
+function getUsersComp() {    
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/getProfile',      
+        url: 'https://ligascortas.herokuapp.com/users/'+window.localStorage.empresaId,      
         headers: {
             'Content-Type':'application/json'
         },
         method: 'GET',
         success: function(data){
-          // guardar token en localstorage o cookie        
-          console.log(data)
-          let list = $("#profile");
-          list.html("");
+          let tabla = $("#bodyUsuarios");          
           for (let i = 0; i < data.length; i++) {
-            list.append(`<li class="list-group-item">
-                <table class='table mt-10'>
-                    <thead>
-                        <tr>
-                        <th scope="col">${i+1}</th>                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Nombre</th>
+            tabla.append(`                
+                        <tr>                            
                             <td>${data[i].nombre}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Razón social</th>
                             <td>${data[i].correo}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Domicilio</th>
                             <td>${data[i].numeroTelefono}</td>
                         </tr>
-                    </tbody>
-                </table>
-                </li>`);
+                `);
           }
+          $('#usuariosEmpresa').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ ligas por página",
+                "zeroRecords": "No hay ligas para mostrar",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "",
+                "infoFiltered": "(Buscando en _MAX_ ligas)"
+            }
+          });
         },
         error: function(error_msg) {
           alert((error_msg["responseText"]))
@@ -45,4 +32,5 @@ function getProfile() {
       })
 }
 
-window.onload = getProfile;
+window.onload = getUsersComp;
+  
