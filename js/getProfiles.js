@@ -18,11 +18,11 @@ function getUsersComp() {
           }
           $('#usuariosEmpresa').DataTable({
             "language": {
-                "lengthMenu": "Mostrar _MENU_ ligas por página",
-                "zeroRecords": "No hay ligas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ perfiles por página",
+                "zeroRecords": "No hay perfiles para mostrar",
                 "info": "Página _PAGE_ de _PAGES_",
                 "infoEmpty": "",
-                "infoFiltered": "(Buscando en _MAX_ ligas)"
+                "infoFiltered": "(Buscando en _MAX_ perfiles)"
             }
           });
         },
