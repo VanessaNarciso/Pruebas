@@ -1,8 +1,26 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 ///////////////////////////// FALTA SABER QUE LIGA ////////////////////////////////
-let liga = '5eb4b19d69ca5a0017c102be' 
+var pathname = $(location).attr('search');
+let liga = pathname.substr(4)
+console.log(liga)
 
-function getLigasComp() {       
+function urlValida(string) {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;  
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function encodeCode(code){
+  return encodeURIComponent(code).replace(/[!'()]/g, escape).replace(/\*/g, "%2A");
+}
+
+function getLigasComp() {    
     $.ajax({
         url: 'https://ligascortas.herokuapp.com/visitas/'+liga,      
         headers: {
@@ -13,8 +31,8 @@ function getLigasComp() {
           let tabla = $("#bodyVisitas");
           $("#visitas").text(data.length);
           ///////////////////////////////////////    OBTENER LA MODA DEL ARREGLO DATA EN data.navegador y data.geolocalización
-          let paisMay = data[0].geolocalizacion;
-          let navMay = data[0].geolocalizacion;
+          let paisMay = data[data.length-1].geolocalizacion;
+          let navMay = data[data.length-1].navegador;
           $("#paisMax").text(paisMay);
           $("#navMax").text(navMay);
           for (let i = 0; i < data.length; i++) {
@@ -68,8 +86,14 @@ $('#create_button').on('click', function(){
     // cargar datos del form    
     let nombreLiga = $('#inputName').val()
     let codigoLiga = $('#inputLigaCorta').val()
+    codigoLiga = encodeCode(codigoLiga);
     let ligaCorta = serverName+'/liga/'+codigoLiga
     let ligaOriginal = $('#inputURL').val()
+    if(!urlValida(ligaOriginal)){
+      alert('Formato de liga incorrecto');
+      $('#inputURL').focus();
+      return false;
+    }
   
     json_to_send = {
       "nombreLiga": nombreLiga,
@@ -99,8 +123,8 @@ $('#create_button').on('click', function(){
     })
   })
 
-$('#inputLigaCorta').on('input', function(e){
-    $('#ligaCortaCompleta').val(serverName +'/liga/' +$('#inputLigaCorta').val());
+  $('#inputLigaCorta').on('input', function(e){
+    $('#ligaCortaCompleta').val(serverName +'/liga/' +encodeCode($('#inputLigaCorta').val()));
   })
 
 window.onload = getLigasComp;

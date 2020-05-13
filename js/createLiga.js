@@ -1,11 +1,33 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 
+function urlValida(string) {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;  
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function encodeCode(code){
+  return encodeURIComponent(code).replace(/[!'()]/g, escape).replace(/\*/g, "%2A");
+}
+
 $('#create_button').on('click', function(){    
     // cargar datos del form    
     let nombreLiga = $('#inputName').val()
     let codigoLiga = $('#inputLigaCorta').val()
+    codigoLiga = encodeCode(codigoLiga);
     let ligaCorta = serverName+'/liga/'+codigoLiga
     let ligaOriginal = $('#inputURL').val()
+    if(!urlValida(ligaOriginal)){
+      alert('Formato de liga incorrecto');
+      $('#inputURL').focus();
+      return false;
+    }
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
   
@@ -47,5 +69,5 @@ $('#create_button').on('click', function(){
   };  
 
   $('#inputLigaCorta').on('input', function(e){
-    $('#ligaCortaCompleta').val(serverName +'/liga/' +$('#inputLigaCorta').val());
+    $('#ligaCortaCompleta').val(serverName +'/liga/' +encodeCode($('#inputLigaCorta').val()));
   })
