@@ -57,14 +57,20 @@ function getDatosDashboard(){
             
             ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
             const week = Last8Days();
-            //console.log("week es: ",week);
+            console.log("week es: ",week);
             var diaSemana=0;
             var contadorDatos=0;
             var semana = [];
             var visitasDia=0;
             data.sort(function(a, b) {
                 return (a.visita.fecha < b.visita.fecha) ? -1 : ((a.visita.fecha > b.visita.fecha) ? 1 : 0);
-            });            
+            });
+            console.log(data)
+            fechaVis = new Date(data[contadorDatos].visita.fecha);
+            while(fechaVis < week[diaSemana]){
+              contadorDatos+=1;
+              fechaVis = new Date(data[contadorDatos].visita.fecha);
+            }            
             while(contadorDatos<data.length && diaSemana<7){
                 anterior = week[diaSemana];
                 actual = week[diaSemana+1];
