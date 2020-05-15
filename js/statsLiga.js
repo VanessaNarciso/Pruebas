@@ -106,11 +106,12 @@ $('#create_button').on('click', function(){
     json_to_send = JSON.stringify(json_to_send)
     console.log(json_to_send)
     $.ajax({
-      url: serverName+'/updateLiga/'+liga,      
+      url: serverName+'/ligas/'+liga,      
       headers: {
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          'Authorization' : window.localStorage.token
       },
-      method: 'PUT',
+      method: 'PATCH',
       dataType: 'json',
       data: json_to_send,
       success: function(data){
@@ -121,7 +122,7 @@ $('#create_button').on('click', function(){
         alert((error_msg["responseText"]))
       }
     })
-  })
+})
 
   $('#inputLigaCorta').on('input', function(e){
     $('#ligaCortaCompleta').val(serverName +'/liga/' +encodeCode($('#inputLigaCorta').val()));
