@@ -1,5 +1,31 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 
+
+function loadEmpresas() {
+  $.ajax({
+    url: 'https://ligascortas.herokuapp.com/getCompanies',
+    // url: 'https://tuapp.herokuapp.com/todos',
+    method: 'GET',
+    dataType: 'json',
+    success: function(data){
+
+      for( let i = 0; i < data.length; i++) {
+        // aqui va su código para agregar los elementos de la lista
+        var id = data[i]['_id']
+        var nombre = data[i]['nombre']
+        $('#inputEmpresas').append("<option value='"+id+"'>"+nombre+"</option>")
+    
+      }
+    },
+    error: function(error_msg) {
+      alert((error_msg['responseText']));
+    }
+  });
+}
+
+loadEmpresas()
+
+
 function urlValida(string) {
   let url;
 
@@ -20,6 +46,7 @@ $('#create_button').on('click', function(){
     // cargar datos del form    
     let nombreLiga = $('#inputName').val()
     let codigoLiga = $('#inputLigaCorta').val()
+    let company = " "
     codigoLiga = encodeCode(codigoLiga);
     let ligaCorta = serverName+'/liga/'+codigoLiga
     let ligaOriginal = $('#inputURL').val()
@@ -28,8 +55,15 @@ $('#create_button').on('click', function(){
       $('#inputURL').focus();
       return false;
     }
-    let company = window.localStorage.empresaId
+    if(window.localStorage.tipo == 0){
+
+      company =  $('#inputEmpresas').val()
+      console.log("Soy admin" + company)
+    }else{
+      company = window.localStorage.empresaId
+    }
     let uId = window.localStorage.uid
+
   
     json_to_send = {
       "nombreLiga": nombreLiga,
