@@ -10252,6 +10252,10 @@ body {
   color: white;
 }
 
+.colorMod{
+  background-color: rgb(255,138,101);
+  color: white;
+}
 .back_login {
   background: 
   linear-gradient(135deg, rgb(66,165,245) 25%, #343a40 25%) -50px 0,
