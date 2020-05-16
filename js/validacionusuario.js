@@ -10,6 +10,6 @@ if(window.localStorage.tipo == 2){
     document.getElementById("selectEmpresa").style.display = "none";
     document.getElementById("perfiles").style.display = "none";
     var str = document.getElementById("usertype").innerHTML; 
-    var res = str.replace("Administración", "Visitante");
+    var res = str.replace("Administración", "Usuario");
     document.getElementById("usertype").innerHTML = res;
 }
