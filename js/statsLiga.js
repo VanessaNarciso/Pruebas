@@ -87,7 +87,7 @@ $('#create_button').on('click', function(){
     let nombreLiga = $('#inputName').val()
     let codigoLiga = $('#inputLigaCorta').val()
     codigoLiga = encodeCode(codigoLiga);
-    let ligaCorta = serverName+'/liga/'+codigoLiga
+    let ligaCorta = serverName+'/'+codigoLiga;
     let ligaOriginal = $('#inputURL').val()
     if(!urlValida(ligaOriginal)){
       alert('Formato de liga incorrecto');
@@ -125,7 +125,7 @@ $('#create_button').on('click', function(){
 })
 
   $('#inputLigaCorta').on('input', function(e){
-    $('#ligaCortaCompleta').val(serverName +'/liga/' +encodeCode($('#inputLigaCorta').val()));
+    $('#ligaCortaCompleta').val(serverName +'/' +encodeCode($('#inputLigaCorta').val()));
   })
 
 window.onload = getLigasComp;
