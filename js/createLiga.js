@@ -1,5 +1,27 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 
+function stringValue(str){
+  let ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let sum = 0;
+  mult = Math.floor(Math.random() * 1000) + 1;
+  mult2 = Math.floor(Math.random() * 151) + 1;
+  for(let i=0; i<str.length; i++){
+    sum=sum+(ALPHABET.indexOf(str[i])*mult2);
+  }  
+  return sum*mult*mult2;
+}
+function encode(ligaLarga) {
+  ligaLarga.replace(/[^0-9a-z]/gi, '');
+  num = stringValue(ligaLarga)
+  let ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let BASE     = ALPHABET.length;
+  sb = '';
+  while ( num > 1 ) {
+      sb = sb+ALPHABET[Math.ceil(num%BASE)];
+      num = Math.ceil(num/BASE);
+  }
+  return sb.split("").reverse().join("");
+}
 
 function loadEmpresas() {
   $.ajax({
@@ -103,5 +125,10 @@ $('#create_button').on('click', function(){
   };  
 
   $('#inputLigaCorta').on('input', function(e){
+    $('#ligaCortaCompleta').val(serverName +'/' +encodeCode($('#inputLigaCorta').val()));
+  })
+
+  $('#inputURL').on('input', function(e){
+    $('#inputLigaCorta').val(encode($('#inputURL').val()));
     $('#ligaCortaCompleta').val(serverName +'/' +encodeCode($('#inputLigaCorta').val()));
   })
