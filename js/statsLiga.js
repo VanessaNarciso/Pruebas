@@ -89,11 +89,12 @@ $('#create_button').on('click', function(){
     codigoLiga = encodeCode(codigoLiga);
     let ligaCorta = serverName+'/'+codigoLiga;
     let ligaOriginal = $('#inputURL').val()
-    if(!urlValida(ligaOriginal)){
-      alert('Formato de liga incorrecto');
+    if(!urlValida(ligaOriginal)){      
+      $('#error-messageUrl').text('Formato de liga incorrecto');
       $('#inputURL').focus();
       return false;
     }
+    $('#error-messageUrl').text('');
   
     json_to_send = {
       "nombreLiga": nombreLiga,
@@ -119,6 +120,8 @@ $('#create_button').on('click', function(){
         window.location = 'consultUrl.html'
       },
       error: function(error_msg) {
+        $('#error-messageCode').text('Codigo de liga debe ser único');
+        $('#inputLigaCorta').focus();
         alert((error_msg["responseText"]))
       }
     })
