@@ -10276,7 +10276,7 @@ input{
 }
 
 .radioWrap .radioBtnGroup .templateChoice {
-	padding: 40px;
+	padding: 70px;
 	box-shadow: none;
 	position: relative;
 }
@@ -10305,11 +10305,13 @@ input{
 }
 
 .radioWrap .radioBtnGroup .templateChoice .choice.templateOne {
-	background-image: url("../assets/img/template1.png");
+  background-image: url("../assets/img/template1.png");
+  background-size: cover;
 }
 
 .radioWrap .radioBtnGroup .templateChoice .choice.templateTwo {
-	background-image: url("../assets/img/template2.png");
+  background-image: url("../assets/img/template2.png");
+  background-size: cover;
 }
 
 .radioWrap .radioBtnGroup .templateChoice .choice:hover {
