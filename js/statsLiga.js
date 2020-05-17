@@ -22,7 +22,7 @@ function encodeCode(code){
 
 function getLigasComp() {    
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/visitas/'+liga,      
+        url: serverName+'/visitas/'+liga,      
         headers: {
             'Content-Type':'application/json'
         },
@@ -63,7 +63,7 @@ function getLigasComp() {
 
     /////////////////////////  LLENAR FORM
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/getLiga/'+liga,      
+        url: serverName+'/getLiga/'+liga,      
         headers: {
             'Content-Type':'application/json'
         },

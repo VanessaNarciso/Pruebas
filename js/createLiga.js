@@ -10,6 +10,7 @@ function stringValue(str){
   }  
   return sum*mult*mult2;
 }
+
 function encode(ligaLarga) {
   ligaLarga.replace(/[^0-9a-z]/gi, '');
   num = stringValue(ligaLarga)
@@ -25,7 +26,7 @@ function encode(ligaLarga) {
 
 function loadEmpresas() {
   $.ajax({
-    url: 'https://ligascortas.herokuapp.com/getCompanies',
+    url: serverName+'/getCompanies',
     // url: 'https://tuapp.herokuapp.com/todos',
     method: 'GET',
     dataType: 'json',
@@ -122,7 +123,7 @@ $('#create_button').on('click', function(){
   
   function load() {
     $('#ligaCortaCompleta').val(serverName);
-  };  
+  };
 
   $('#inputLigaCorta').on('input', function(e){
     $('#ligaCortaCompleta').val(serverName +'/' +encodeCode($('#inputLigaCorta').val()));
