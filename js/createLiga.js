@@ -73,11 +73,12 @@ $('#create_button').on('click', function(){
     codigoLiga = encodeCode(codigoLiga);
     let ligaCorta = serverName+'/'+codigoLiga
     let ligaOriginal = $('#inputURL').val()
-    if(!urlValida(ligaOriginal)){
-      alert('Formato de liga incorrecto');
+    if(!urlValida(ligaOriginal)){      
+      $('#error-messageUrl').text('Formato de liga incorrecto');
       $('#inputURL').focus();
       return false;
     }
+    $('#error-messageUrl').text('');
     if(window.localStorage.tipo == 0){
 
       company =  $('#inputEmpresas').val()
@@ -114,7 +115,9 @@ $('#create_button').on('click', function(){
         window.location = 'consultUrl.html'
       },
       error: function(error_msg) {
-        alert((error_msg["responseText"]))
+        $('#error-messageCode').text('Codigo de liga debe ser único');
+        $('#inputLigaCorta').focus();
+        //alert((error_msg["responseText"]))
       }
     })
   })
