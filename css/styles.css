@@ -10252,10 +10252,6 @@ body {
   color: white;
 }
 
-.colorMod{
-  background-color: rgb(255,138,101);
-  color: white;
-}
 .back_login {
   background: 
   linear-gradient(135deg, rgb(66,165,245) 25%, #343a40 25%) -50px 0,
@@ -10268,4 +10264,55 @@ body {
 
 input{
   text-align: center;
+}
+
+.radioWrap {
+	padding: 50px;
+}
+
+.radioWrap .radioBtnGroup {
+	max-width: 800px;
+	margin: auto;
+}
+
+.radioWrap .radioBtnGroup .templateChoice {
+	padding: 40px;
+	box-shadow: none;
+	position: relative;
+}
+
+.radioWrap .radioBtnGroup .templateChoice.active {
+	outline: none !important;
+}
+
+.radioWrap .radioBtnGroup .templateChoice.active .choice {
+	border-color: #5f8df1;
+	outline: none !important;
+	box-shadow: 0px 3px 22px 0px #7b7b7b;
+}
+
+.radioWrap .radioBtnGroup .templateChoice .choice {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	left: 3px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 2px solid transparent;
+	transition: all 0.5s;
+}
+
+.radioWrap .radioBtnGroup .templateChoice .choice.templateOne {
+	background-image: url("../assets/img/template1.png");
+}
+
+.radioWrap .radioBtnGroup .templateChoice .choice.templateTwo {
+	background-image: url("../assets/img/template2.png");
+}
+
+.radioWrap .radioBtnGroup .templateChoice .choice:hover {
+	border-color: #5f8df1;
+	outline: none !important;
 }
