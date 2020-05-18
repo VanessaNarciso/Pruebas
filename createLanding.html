@@ -12,6 +12,7 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -150,11 +151,11 @@
                                     <div class="btn-group radioBtnGroup btn-group-justified" data-toggle="buttons">
                                         <label class="btn templateChoice active">
                                             <div class="choice templateOne"></div>
-                                            <input id = "optionOne" type="radio" name="options" checked> 
+                                            <input id = "optionOne" type="radio" name="options" value = "1" checked> 
                                         </label>
                                         <label class="btn templateChoice">
                                             <div class="choice templateTwo"></div>
-                                            <input id = "optionTwo" type="radio" name="options"> 
+                                            <input id = "optionTwo" type="radio" name="options" value = "2"> 
                                         </label>
                                     </div>
                                 </div>
@@ -191,22 +192,16 @@
                                     <input class="form-control py-4" id="inputFooter">                                 
                                 </div>
                                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <script>
-                                        if (document.getElementById('templateOne').checked) {
-                                            <a class="btn btn-primary text-white"  href = "template-1.html" id="create_button">
-                                                Crear
-                                            </a>
-                                        }
-                                        else{
-                                            <a class="btn btn-primary text-white"  href = "template-2.html" id="create_button">
-                                                Crear
-                                            </a>
-                                        }
-                                    </script>
                                     <a class="btn btn-primary text-white"  href = "template-1.html" id="create_button">
                                         Crear
                                     </a>
+                
                                 </div>
+                                <script>
+                                    $("input[name='options']").change(function(){
+                                        $("#create_button").attr("href", "template-2.html");
+                                    });
+                                </script>
                             </form>
                         </div>
                     </div>
