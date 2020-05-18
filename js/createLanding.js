@@ -5,16 +5,37 @@ $('#create_button').on('click', function(){
     let nombreLanding = $('#inputName').val()
     let descriptionLanding = $('#inputDescription').val()
     let footerLanding = $('#inputFooter').val()
-    //let templateChoice = $('#')
-    // falta decision de template 1 o 2
-    // falta cargar la imagen
+    let templateChoice = $('inputChoice:checked').val();
+    // id = "optionOne"
+    // id = "optionTwo"
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
+    
+
+    const imagenLanding = {
+      dom    : document.getElementById( "inputImage" ),
+      binary : null
+    };
+
+    // FileReader API 
+    const reader = new FileReader();
+    reader.addEventListener( "load", function () {
+      imagenLanding.binary = reader.result;
+    } );
+    // Lee la imagen que el usuario selecciono
+    imagenLanding.dom.addEventListener( "change", function () {
+      if( reader.readyState === FileReader.LOADING ) {
+        reader.abort();
+      }
+      reader.readAsBinaryString( imagenLanding.dom.files[0] );
+    } );
   
     json_to_send = {
       "nombreLanding": nombreLanding,
       "descriptionLanding": descriptionLanding,
       "footerLandin": footerLanding,
+      "imagenLanding" : imagenLanding,
+      "templateChoice" : templateChoice,
       "empresaLiga" : company,
       "createdBy" : uId,
       "fechaCreacion" : new Date(),
@@ -40,13 +61,3 @@ $('#create_button').on('click', function(){
       }
     })
   })
-
-  //window.onload = load();
-  
-  //function load() {
-  //  $('#ligaCortaCompleta').val(serverName);
-  //};  
-
-  //$('#inputLigaCorta').on('input', function(e){
-  //  $('#ligaCortaCompleta').val(serverName +'/liga/' +$('#inputLigaCorta').val());
-  //})
