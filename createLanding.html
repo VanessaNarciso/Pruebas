@@ -191,7 +191,19 @@
                                     <input class="form-control py-4" id="inputFooter">                                 
                                 </div>
                                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <a class="btn btn-primary text-white" id="create_button">
+                                    <script>
+                                        if (document.getElementById('templateOne').checked) {
+                                            <a class="btn btn-primary text-white"  href = "template-1.html" id="create_button">
+                                                Crear
+                                            </a>
+                                        }
+                                        else{
+                                            <a class="btn btn-primary text-white"  href = "template-2.html" id="create_button">
+                                                Crear
+                                            </a>
+                                        }
+                                    </script>
+                                    <a class="btn btn-primary text-white"  href = "template-1.html" id="create_button">
                                         Crear
                                     </a>
                                 </div>
@@ -204,14 +216,13 @@
 
 
     </div>
-
+    <script src = "js/validacionusuario.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src = "js/validacionusuario.js"></script>
-    <script src = "js/createLanding.js"></script>
+
 </body>
 
 </html>
