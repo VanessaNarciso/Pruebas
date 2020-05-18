@@ -1,46 +1,25 @@
-let serverName = 'https://ligascortas.herokuapp.com';
-
+let serverName = 'https://ligascortas.herokuapp.com'
 
 $('#create_button').on('click', function(){    
-
-  console.log(parseInt($('inputChoice:checked').val()))
     // cargar datos del form    
-    console.log("create") 
     let nombreLanding = $('#inputName').val()
-    let descriptionLanding = $('#inputDescripcion').val()
+    let descriptionLanding = $('#inputDescription').val()
     let footerLanding = $('#inputFooter').val()
-    let templateChoice = $('inputChoice:checked').val();
+    let templateChoice = document.getElementById("optionOne").checked ? '1' : '2'
     // id = "optionOne"
     // id = "optionTwo"
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
-    
 
-    const imagenLanding = {
-      dom    : document.getElementById( "inputImage" ),
-      binary : null
-    };
-
-    // FileReader API 
-    const reader = new FileReader();
-    reader.addEventListener( "load", function () {
-      imagenLanding.binary = reader.result;
-    } );
-    // Lee la imagen que el usuario selecciono
-    imagenLanding.dom.addEventListener( "change", function () {
-      if( reader.readyState === FileReader.LOADING ) {
-        reader.abort();
-      }
-      reader.readAsBinaryString( imagenLanding.dom.files[0] );
-    } );
-  
     json_to_send = {
-      "nombreLandinggg": nombreLanding,
+      "nombreLanding": nombreLanding,
       "descriptionLanding": descriptionLanding,
-      "footerLandin": footerLanding,
-      //"imagenLanding" : imagenLanding,
+      "footerLanding": footerLanding,
       "templateChoice" : templateChoice,
-      "empresaLiga" : company
+      "empresaLiga" : company,
+      "createdBy" : uId,
+      "fechaCreacion" : new Date(),
+      "fechaModificacion" : new Date()
     };
   
     json_to_send = JSON.stringify(json_to_send)
