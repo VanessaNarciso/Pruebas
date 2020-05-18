@@ -1,9 +1,13 @@
-let serverName = 'https://ligascortas.herokuapp.com'
+let serverName = 'https://ligascortas.herokuapp.com';
+
 
 $('#create_button').on('click', function(){    
+
+  console.log(parseInt($('inputChoice:checked').val()))
     // cargar datos del form    
+    console.log("create") 
     let nombreLanding = $('#inputName').val()
-    let descriptionLanding = $('#inputDescription').val()
+    let descriptionLanding = $('#inputDescripcion').val()
     let footerLanding = $('#inputFooter').val()
     let templateChoice = $('inputChoice:checked').val();
     // id = "optionOne"
@@ -31,15 +35,12 @@ $('#create_button').on('click', function(){
     } );
   
     json_to_send = {
-      "nombreLanding": nombreLanding,
+      "nombreLandinggg": nombreLanding,
       "descriptionLanding": descriptionLanding,
       "footerLandin": footerLanding,
-      "imagenLanding" : imagenLanding,
+      //"imagenLanding" : imagenLanding,
       "templateChoice" : templateChoice,
-      "empresaLiga" : company,
-      "createdBy" : uId,
-      "fechaCreacion" : new Date(),
-      "fechaModificacion" : new Date()
+      "empresaLiga" : company
     };
   
     json_to_send = JSON.stringify(json_to_send)
