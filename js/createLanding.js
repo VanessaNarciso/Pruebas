@@ -5,7 +5,7 @@ $('#create_button').on('click', function(){
     let nombreLanding = $('#inputName').val()
     let descriptionLanding = $('#inputDescription').val()
     let footerLanding = $('#inputFooter').val()
-    let templateChoice = document.getElementById("optionOne").checked ? '1' : '2'
+    let templateChoice = $("input[name='options']:checked").val();
     // id = "optionOne"
     // id = "optionTwo"
     let company = window.localStorage.empresaId
