@@ -160,7 +160,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: BLACK !important;
   text-decoration: none;
   background-color: transparent;
 }
@@ -6137,7 +6137,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: rgba(242, 242, 242, 1) !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -10119,8 +10119,13 @@ body {
   height: 100%;
   flex-wrap: nowrap;
 }
+
+.sb-sidenav-menu-heading{
+  color: BLACK !important;
+}
 .sb-sidenav .sb-sidenav-menu {
   flex-grow: 1;
+  background-color: rgba(242, 242, 242, 1);
 }
 .sb-sidenav .sb-sidenav-menu .nav {
   flex-direction: column;
@@ -10170,7 +10175,7 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: rgba(255, 255, 255, 0.25);
+  color: BLACK !important;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
   color: rgba(255, 255, 255, 0.25);
@@ -10187,6 +10192,11 @@ body {
 .sb-sidenav-dark .sb-sidenav-footer {
   background-color: #343a40;
 }
+
+#sidebarToggle{
+  color: BLACK !important
+}
+
 
 .sb-sidenav-light {
   background-color: #f8f9fa;
