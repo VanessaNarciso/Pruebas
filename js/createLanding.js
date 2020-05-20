@@ -13,14 +13,11 @@ function getBase64Image(img) {
 function stringValue(str){
   let ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let sum = 0;
-  mult = Math.floor(Math.random() * 1000) + 1;
-  mult2 = Math.floor(Math.random() * 151) + 1;
   for(let i=0; i<str.length; i++){
-    sum=sum+(ALPHABET.indexOf(str[i])*mult2);
+    sum=sum+(ALPHABET.indexOf(str[i])*10000);
   }  
-  return sum*mult*mult2;
+  return sum;
 }
-
 function encode(ligaLarga) {
   ligaLarga.replace(/[^0-9a-z]/gi, '');
   num = stringValue(ligaLarga)
@@ -65,35 +62,40 @@ $('#create_button').on('click', function(){
     let footerLanding = $('#inputFooter').val()
     let templateChoice = $("input[name='options']:checked").val();
     // id = "optionOne", "optionTwo" para los radios
-    // how tf do u send an image i swear to god 
     var imageLanding = getBase64Image(document.getElementById("inputImage"));
 
     // Esto se manda a landing
-    let ligaCorta = serverName+'/'+templateChoice+'/'+nombreLanding;
+    let ms = new Date().getTime();
+    let code = ms+window.localStorage.uid;
+    let ligaLanding = serverName+'/landing?template='+templateChoice+'&id='+code;
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
 
-    json_to_send_landing = {
+    infoLanding = {
       "nombreLanding": nombreLanding,
-      "descriptionLanding": descriptionLanding,
-      "footerLanding": footerLanding,
+      "descripcionLanding": descriptionLanding,      
       "templateChoice" : templateChoice,
-      "imageLanding" : imageLanding
-    };
-
-    json_to_send_config = {
-      
-      "ligaCorta" : ligaCorta,
-      "empresaLiga" : company,
+      "ligaLanding" : ligaLanding,
+      "empresaLanding" : company,
       "createdBy" : uId,
       "fechaCreacion" : new Date()
+    };
+
+    configLanding = {
+      "titulo" : tituloLanding,
+      "texto" : textoLanding,
+      "footerLanding": footerLanding,
+      "imageLanding" : imageLanding,
+      "fechaModificacion" : new Date()
     }
   
-    json_to_send_landing = JSON.stringify(json_to_send_landing)
-    console.log(json_to_send_landing)
+    json_to_send_ = {
+      infoLanding,
+      configLanding
+    }
 
-    json_to_send_landing = JSON.stringify(json_to_send_config)
-    console.log(json_to_send_config)
+    json_to_send = JSON.stringify(json_to_send)
+    console.log(json_to_send)
     // hacer el POST a confLanding
 
     $.ajax({
