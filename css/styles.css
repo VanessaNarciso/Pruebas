@@ -165,7 +165,7 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #0056b3;
+  color: rgba(201, 201, 201, 1) !important;
   text-decoration: underline;
 }
 
@@ -10196,6 +10196,12 @@ body {
 #sidebarToggle{
   color: BLACK !important
 }
+
+
+#sidebarToggle:hover{
+  color: BLUE !important;
+}
+
 
 
 .sb-sidenav-light {

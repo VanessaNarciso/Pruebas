@@ -11,52 +11,28 @@ function getCompanies() {
         },
         method: 'GET',
         success: function(data){
-          // guardar token en localstorage o cookie        
-          console.log(data)
-          let list = $("#companies");
-          list.html("");
+         let tabla = $("#bodyEmpresas");          
           for (let i = 0; i < data.length; i++) {
-            list.append(`<li class="list-group-item">
-                <table class='table mt-10'>
-                    <thead>
-                        <tr>
-                        <th scope="col">${i+1}</th>                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Nombre</th>
+                tabla.append(`                
+                        <tr>                            
                             <td>${data[i].nombre}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Razón social</th>
                             <td>${data[i].razon_social}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Domicilio</th>
-                            <td>${data[i].domicilio}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Numero Contacto</th>
+                            <td>${data[i].domicilio}</td>                        
                             <td>${data[i].numero}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Pais</th>
                             <td>${data[i].pais}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">Fecha Creación</th>
-                            <td>${data[i].fechaCreacion}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Fecha Modificación</th>
-                            <td>${data[i].fechaModificacion}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </li>`);
-          }
-        },
+                `);
+            }
+            $('#empresastable').DataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ perfiles por página",
+                "zeroRecords": "No hay perfiles para mostrar",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "",
+                "infoFiltered": "(Buscando en _MAX_ perfiles)"
+            }
+          });
+        },               
         error: function(error_msg) {
           alert((error_msg["responseText"]))
         }
