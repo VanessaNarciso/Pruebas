@@ -4,6 +4,22 @@ var pathname = $(location).attr('search');
 let liga = pathname.substr(4)
 console.log(liga)
 
+function dateRead(d){
+  var dd = d.getDate();
+  var mm = d.getMonth()+1;
+  var yyyy = d.getFullYear();
+  var ss = d.getSeconds();
+  var mii = d.getMinutes();
+  var hh = d.getHours();
+  if(dd<10) {dd='0'+dd}
+  if(mm<10) {mm='0'+mm}
+  if(ss<10) {ss='0'+ss}
+  if(mii<10) {mii='0'+mii}
+  if(hh<10) {hh='0'+hh}
+  date = 'Día: '+dd+'/'+mm+'/'+yyyy+' Hora:'+hh+':'+mii+':'+ss;
+  return date;
+}
+
 function urlValida(string) {
   let url;
 
@@ -36,9 +52,10 @@ function getLigasComp() {
           $("#paisMax").text(paisMay);
           $("#navMax").text(navMay);
           for (let i = 0; i < data.length; i++) {
+            fecha = dateRead(new Date(data[i].fecha));
             tabla.append(`                
                         <tr>                            
-                            <td>${data[i].fecha}</td>
+                            <td>${fecha}</td>
                             <td>${data[i].navegador}</td>
                             <td>${data[i].ip}</td>
                             <td>${data[i].geolocalizacion}</td>                            

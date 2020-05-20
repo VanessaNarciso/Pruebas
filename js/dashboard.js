@@ -30,18 +30,18 @@ function Last7DaysUser () {
 }
 
 function getDatosDashboard(){
-
+  var serverName = 'https://ligascortas.herokuapp.com';
   if(tipo === "0"){
-    var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas';
-    var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/';
-    var landingVis = 'https://ligascortas.herokuapp.com/landingVisitas';
-    var landingVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/';
+    var urlVis = serverName+'/ligasVisitas';
+    var urlVisNav = serverName+'/ligasVisitasNav/';
+    //var landingVis = serverName+'/landingVisitas';
+    //var landingVisNav = serverName+'/ligasVisitasNav/';
     $('#NameEmpresa').text('Administrador');
   }else{
-    var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas/'+idE;
-    var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE;
-    var landingVis = 'https://ligascortas.herokuapp.com/landingVisitas/'+idE;
-    var landingVisNav = 'https://ligascortas.herokuapp.com/landingVisitasNav/'+idE;
+    var urlVis = serverName+'/ligasVisitas/'+idE;
+    var urlVisNav = serverName+'/ligasVisitasNav/'+idE;
+    //var landingVis = serverName+'/landingVisitas/'+idE;
+    //var landingVisNav = serverName+'/landingVisitasNav/'+idE;
     $('#NameEmpresa').text(window.localStorage.empresa);
   }
 
