@@ -97,8 +97,13 @@ $('#create_button').on('click', function(){
   
     json_to_send_landing = JSON.stringify(json_to_send_landing)
     console.log(json_to_send_landing)
+
+    json_to_send_landing = JSON.stringify(json_to_send_config)
+    console.log(json_to_send_config)
+    // hacer el POST a confLanding
+
     $.ajax({
-      url: serverName+'/createLanding',      
+      url: serverName+'/landing'+templateChoice+'/'+nombreLanding,      
       headers: {
           'Content-Type':'application/json'
       },
