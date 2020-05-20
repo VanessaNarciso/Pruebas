@@ -56,24 +56,28 @@ function loadEmpresas() {
 loadEmpresas()
 
 $('#create_button').on('click', function(){    
-    // Esto se mandara a confLanding
-    let nombreLanding = $('#inputName').val()
-    let descriptionLanding = $('#inputDescription').val()
-    let footerLanding = $('#inputFooter').val()
-    let templateChoice = $("input[name='options']:checked").val();
-    // id = "optionOne", "optionTwo" para los radios
-    var imageLanding = getBase64Image(document.getElementById("inputImage"));
-
-    // Esto se manda a landing
     let ms = new Date().getTime();
     let code = ms+window.localStorage.uid;
+
+    // Esto se mandara a infoLanding
+    let nombreLanding = $('#inputNombre').val();
+    let descripcionLanding = $('#inputDescripcion').val();
+    let templateChoice = $("input[name='options']:checked").val(); // id = "optionOne", "optionTwo" para los radios
     let ligaLanding = serverName+'/landing/'+templateChoice+'/'+code;
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
 
+    // Esto se mandara a configLanding
+    let tituloLanding = $('#inputTitulo').val();
+    let textoLanding = $('#inputTexto').val();
+    let footerLanding = $('#inputFooter').val();
+    let templateChoice = $("input[name='options']:checked").val();
+    var imageLanding = getBase64Image(document.getElementById("inputImage"));
+
+
     infoLanding = {
       "nombreLanding": nombreLanding,
-      "descripcionLanding": descriptionLanding,      
+      "descripcionLanding": descripcionLanding,      
       "templateChoice" : templateChoice,
       "ligaLanding" : ligaLanding,
       "empresaLanding" : company,
