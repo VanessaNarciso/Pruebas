@@ -31,9 +31,23 @@ function Last7DaysUser () {
 
 function getDatosDashboard(){
 
+  if(tipo === "0"){
+    var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas';
+    var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/';
+    var landingVis = 'https://ligascortas.herokuapp.com/landingVisitas';
+    var landingVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/';
+    $('#NameEmpresa').text('Administrador');
+  }else{
+    var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas/'+idE;
+    var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE;
+    var landingVis = 'https://ligascortas.herokuapp.com/landingVisitas/'+idE;
+    var landingVisNav = 'https://ligascortas.herokuapp.com/landingVisitasNav/'+idE;
+    $('#NameEmpresa').text(window.localStorage.empresa);
+  }
+
     ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/ligasVisitas/'+idE,      
+        url: urlVis,           
         headers: {
             'Content-Type':'application/json'
         },
@@ -139,7 +153,7 @@ function getDatosDashboard(){
 
     ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS LIGAS
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE,      
+        url: urlVisNav,           
         headers: {
             'Content-Type':'application/json'
         },
@@ -196,7 +210,7 @@ function getDatosDashboard(){
     //////////////////////////////////////////////////////////////////    TOTAL VISITAS LANDING
 
     $.ajax({
-      url: 'https://ligascortas.herokuapp.com/landingVisitas/'+idE,      
+      url: landingVis,         
       headers: {
           'Content-Type':'application/json'
       },
@@ -302,7 +316,7 @@ function getDatosDashboard(){
     //////////////////////////////////////////////////////////////////    GRAFICA DE BARRAS LANDINGS
 
     $.ajax({
-      url: 'https://ligascortas.herokuapp.com/landingVisitasNav/'+idE,      
+      url: landingVisNav,         
       headers: {
           'Content-Type':'application/json'
       },
