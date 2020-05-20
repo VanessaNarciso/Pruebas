@@ -49,7 +49,7 @@ function loadEmpresas() {
 loadEmpresas()
 
 $('#create_button').on('click', function(){    
-    // cargar datos del form    
+    // Esto se mandara a confLanding
     let nombreLanding = $('#inputName').val()
     let descriptionLanding = $('#inputDescription').val()
     let footerLanding = $('#inputFooter').val()
@@ -57,6 +57,8 @@ $('#create_button').on('click', function(){
     // id = "optionOne"
     // id = "optionTwo"
     // how tf do u send an image i swear to god 
+
+    // Esto se manda a landing
     let ligaCorta = serverName+'/'+templateChoice+'/'+nombreLanding;
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
@@ -69,8 +71,7 @@ $('#create_button').on('click', function(){
       "ligaCorta" : ligaCorta,
       "empresaLiga" : company,
       "createdBy" : uId,
-      "fechaCreacion" : new Date(),
-      "fechaModificacion" : new Date()
+      "fechaCreacion" : new Date()
     };
   
     json_to_send = JSON.stringify(json_to_send)
@@ -98,4 +99,4 @@ $('#create_button').on('click', function(){
   function load() {
     $('#nombreLanding').val(serverName);
   };
-  
+
