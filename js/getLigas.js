@@ -14,14 +14,25 @@ function dateRead(d){
   return date;
 }
 
-function getLigasComp() {    
+function getLigasComp() {
+    var tipo = window.localStorage.tipo;
+    var serverName = 'https://ligascortas.herokuapp.com';
+    var getUrl = serverName;
+    if(tipo == "0"){
+      getUrl= getUrl+"/ligas/";
+      $('#creator_header').text('Empresa');
+    }else{
+      getUrl= getUrl+'/ligas/'+window.localStorage.empresaId;
+    }
+    console.log(getUrl)
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/ligas/'+window.localStorage.empresaId,      
+        url: getUrl,      
         headers: {
             'Content-Type':'application/json'
         },
         method: 'GET',
         success: function(data){
+          console.log(data);
           let tabla = $("#bodyLigas");          
           for (let i = 0; i < data.length; i++) {
             $.ajax({
@@ -33,20 +44,36 @@ function getLigasComp() {
               success: function(data2){
                 fechaC = dateRead(new Date(data[i].fechaCreacion));
                 fechaM = dateRead(new Date(data[i].fechaModificacion));
-                ligOrg = data[i].ligaOriginal.substring(8,30)+' ...';
-                tabla.append(`                
+                ligOrg = data[i].ligaOriginal.substring(8,30)+' ...';                
+                if(tipo== "0"){
+                  tabla.append(`                
                         <tr>                            
                             <td><a class="nav-link" href="liga.html?id=${data[i]._id}">${data[i].nombreLiga}</a></td>
                             <td>${data[i].codigoLiga}</td>
                             <td><a href="${data[i].ligaCorta}">${data[i].ligaCorta}</a></td>
                             <td><a href="${data[i].ligaOriginal}">${ligOrg}</a></td>
                             <td>${fechaC}</td>
-                            <td>${fechaM}</td>                        
+                            <td>${fechaM}</td>
+                            <td>${data[i].empresa}</td>
+                        </tr>
+                `);
+                }else{
+                  tabla.append(`                
+                        <tr>                            
+                            <td><a class="nav-link" href="liga.html?id=${data[i]._id}">${data[i].nombreLiga}</a></td>
+                            <td>${data[i].codigoLiga}</td>
+                            <td><a href="${data[i].ligaCorta}">${data[i].ligaCorta}</a></td>
+                            <td><a href="${data[i].ligaOriginal}">${ligOrg}</a></td>
+                            <td>${fechaC}</td>
+                            <td>${fechaM}</td>
                             <td>${data2.nombre}</td>
                         </tr>
                 `);
+                }
                 if(i == data.length-1){
                   $('#ligasEmpresa').DataTable({
+                    "iDisplayLength": 10,
+                    "aaSorting": [[2,"DESC" ]],
                     "language": {
                         "lengthMenu": "Mostrar _MENU_ ligas por página",
                         "zeroRecords": "No hay ligas para mostrar",
