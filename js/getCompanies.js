@@ -14,8 +14,9 @@ function getCompanies() {
          let tabla = $("#bodyEmpresas");          
           for (let i = 0; i < data.length; i++) {
                 tabla.append(`                
-                        <tr>                            
-                            <td>${data[i].nombre}</td>
+                        <tr> 
+
+                            <td><a class="nav-link" href="empresa.html?id=${data[i]._id}">${data[i].nombre}</a></td>
                             <td>${data[i].razon_social}</td>
                             <td>${data[i].domicilio}</td>                        
                             <td>${data[i].numero}</td>
