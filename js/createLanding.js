@@ -67,7 +67,7 @@ $('#create_button').on('click', function(){
     // Esto se manda a landing
     let ms = new Date().getTime();
     let code = ms+window.localStorage.uid;
-    let ligaLanding = serverName+'/landing?template='+templateChoice+'&id='+code;
+    let ligaLanding = serverName+'/landing/'+templateChoice+'/'+code;
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
 
