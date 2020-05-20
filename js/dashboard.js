@@ -1,4 +1,3 @@
-$('#NameEmpresa').text(window.localStorage.empresa);
 idE = window.localStorage.empresaId;
 tipo = window.localStorage.tipo;
 
@@ -30,10 +29,18 @@ function Last7DaysUser () {
 }
 
 function getDatosDashboard(){
-
+    if(tipo === "0"){
+      var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas';
+      var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/';
+      $('#NameEmpresa').text('Administrador');
+    }else{
+      var urlVis = 'https://ligascortas.herokuapp.com/ligasVisitas/'+idE;
+      var urlVisNav = 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE;
+      $('#NameEmpresa').text(window.localStorage.empresa);
+    }
     ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/ligasVisitas/'+idE,      
+        url: urlVis,      
         headers: {
             'Content-Type':'application/json'
         },
@@ -139,7 +146,7 @@ function getDatosDashboard(){
 
     ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS
     $.ajax({
-        url: 'https://ligascortas.herokuapp.com/ligasVisitasNav/'+idE,      
+        url: urlVisNav,      
         headers: {
             'Content-Type':'application/json'
         },
