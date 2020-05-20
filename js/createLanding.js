@@ -1,5 +1,17 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 
+function getDataUrl(img) {
+  // Create canvas
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  // Set width and height
+  canvas.width = img.width;
+  canvas.height = img.height;
+  // Draw the image
+  ctx.drawImage(img, 0, 0);
+  return canvas.toDataURL('image/jpeg');
+}
+
 function stringValue(str){
   let ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let sum = 0;
@@ -57,25 +69,34 @@ $('#create_button').on('click', function(){
     // id = "optionOne"
     // id = "optionTwo"
     // how tf do u send an image i swear to god 
+    const imageLanding = document.querySelector('#inputImage');
+    img.addEventListener('load', function (event) {
+    const dataUrl = getDataUrl(event.currentTarget);
+    console.log(dataUrl);
+    });
 
     // Esto se manda a landing
     let ligaCorta = serverName+'/'+templateChoice+'/'+nombreLanding;
     let company = window.localStorage.empresaId
     let uId = window.localStorage.uid
 
-    json_to_send = {
+    json_to_send_landing = {
       "nombreLanding": nombreLanding,
       "descriptionLanding": descriptionLanding,
       "footerLanding": footerLanding,
       "templateChoice" : templateChoice,
+    };
+
+    json_to_send_config = {
+      
       "ligaCorta" : ligaCorta,
       "empresaLiga" : company,
       "createdBy" : uId,
       "fechaCreacion" : new Date()
-    };
+    }
   
-    json_to_send = JSON.stringify(json_to_send)
-    console.log(json_to_send)
+    json_to_send_landing = JSON.stringify(json_to_send_landing)
+    console.log(json_to_send_landing)
     $.ajax({
       url: serverName+'/createLanding',      
       headers: {
@@ -83,7 +104,7 @@ $('#create_button').on('click', function(){
       },
       method: 'POST',
       dataType: 'json',
-      data: json_to_send,
+      data: json_to_send_landing,
       success: function(data){
         // guardar token en localstorage o cookie        
         window.location = 'consultLanding.html'
