@@ -1,15 +1,13 @@
 let serverName = 'https://ligascortas.herokuapp.com'
 
-function getDataUrl(img) {
-  // Create canvas
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  // Set width and height
+function getBase64Image(img) {
+  var canvas = document.createElement("canvas");
   canvas.width = img.width;
   canvas.height = img.height;
-  // Draw the image
+  var ctx = canvas.getContext("2d");
   ctx.drawImage(img, 0, 0);
-  return canvas.toDataURL('image/jpeg');
+  var dataURL = canvas.toDataURL("image/png");
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
 function stringValue(str){
@@ -66,14 +64,9 @@ $('#create_button').on('click', function(){
     let descriptionLanding = $('#inputDescription').val()
     let footerLanding = $('#inputFooter').val()
     let templateChoice = $("input[name='options']:checked").val();
-    // id = "optionOne"
-    // id = "optionTwo"
+    // id = "optionOne", "optionTwo" para los radios
     // how tf do u send an image i swear to god 
-    const imageLanding = document.querySelector('#inputImage');
-    img.addEventListener('load', function (event) {
-    const dataUrl = getDataUrl(event.currentTarget);
-    console.log(dataUrl);
-    });
+    var imageLanding = getBase64Image(document.getElementById("inputImage"));
 
     // Esto se manda a landing
     let ligaCorta = serverName+'/'+templateChoice+'/'+nombreLanding;
@@ -85,6 +78,7 @@ $('#create_button').on('click', function(){
       "descriptionLanding": descriptionLanding,
       "footerLanding": footerLanding,
       "templateChoice" : templateChoice,
+      "imageLanding" : imageLanding
     };
 
     json_to_send_config = {
