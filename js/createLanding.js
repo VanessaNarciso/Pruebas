@@ -84,8 +84,8 @@ $('#create_button').on('click', function(){
     configLanding = {
       "titulo" : tituloLanding,
       "texto" : textoLanding,
-      "footerLanding": footerLanding,
-      "imageLanding" : imageLanding,
+      "footer": footerLanding,
+      "imagen" : imageLanding,
       "fechaModificacion" : new Date()
     }
   
