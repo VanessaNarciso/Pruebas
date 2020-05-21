@@ -53,12 +53,12 @@ function getLandingsComp() {
                     <td>${fechaC}</td>
                     <td> <a href ="${data[i].ligaLanding}"> ${ligaLanding}</d>
                     <td>${data[i].creator}</td>     
-                    </tr>
+                  </tr>
                 `);              
                 if(i == data.length-1){
                   $('#landingsEmpresa').DataTable({
                     "language": {
-                        "lengthMenu": "Mostrar _MENU_ lansing pages por página",
+                        "lengthMenu": "Mostrar _MENU_ landing pages por página",
                         "zeroRecords": "No hay landing pages para mostrar",
                         "info": "Página _PAGE_ de _PAGES_",
                         "infoEmpty": "",
