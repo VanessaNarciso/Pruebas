@@ -10321,12 +10321,12 @@ input{
 }
 
 .radioWrap .radioBtnGroup .templateChoice .choice.templateOne {
-  background-image: url("/../assets/img/template1.PNG");
+  background-image: url("https://vanessanarciso.github.io/Pruebas/assets/img/template1.PNG");
   background-size: cover;
 }
 
 .radioWrap .radioBtnGroup .templateChoice .choice.templateTwo {
-  background-image: url("/../assets/img/template2.PNG");
+  background-image: url("https://vanessanarciso.github.io/Pruebas/assets/img/template2.PNG");
   background-size: cover;
 }
 
