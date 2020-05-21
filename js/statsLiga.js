@@ -139,7 +139,7 @@ $('#create_button').on('click', function(){
       error: function(error_msg) {
         $('#error-messageCode').text('Codigo de liga debe ser único');
         $('#inputLigaCorta').focus();
-        alert((error_msg["responseText"]))
+        //alert((error_msg["responseText"]))
       }
     })
 })
