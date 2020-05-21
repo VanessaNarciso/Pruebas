@@ -36,7 +36,6 @@ function getLandingsComp() {
           let tabla = $("#bodyLandings");          
           for (let i = 0; i < data.length; i++) {
                 fechaC = dateRead(new Date(data[i].fechaCreacion));
-                ligOrg = data[i].ligaOriginal.substring(8,30)+' ...';   
                 /*
                   <th>Nombre</th>
                   th>Id landing</th>
@@ -48,11 +47,11 @@ function getLandingsComp() {
                 */                             
                   tabla.append(`                
                   <tr>
-                    <td> ${data[i].landingId} </td>
                     <td> ${data[i].nombreLanding} </td>
-                    <td> ${data[i].descriptionLanding}</td>
+                    <td> ${data[i].codeLanding} </td>
+                    <td> ${data[i].descripcionLanding}</td>
                     <td>${fechaC}</td>
-                    <td> <a href ="${data[i].ligaCorta}"> ${ligOrg}</d>
+                    <td> <a href ="${data[i].ligaLanding}"> ${ligaLanding}</d>
                     <td>${data[i].creator}</td>     
                     </tr>
                 `);              
