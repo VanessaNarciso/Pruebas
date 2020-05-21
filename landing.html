@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Creacion URL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html" id = "usertype">Administración</a><button
+            class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="profile.html">Ajustes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="login.html">Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Inicio</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Administración</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUrls"
+                            aria-expanded="false" aria-controls="collapseUrls">
+                            <div class="sb-nav-link-icon"><i class="fas fa-link"></i></div>
+                            Ligas cortas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseUrls" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createUrl.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
+                                </a>
+                                <a class="nav-link" href="consultUrl.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLanding"
+                            aria-expanded="false" aria-controls="collapseLanding">
+                            <div class="sb-nav-link-icon"><i class="fas fa-plane-arrival"></i></div>
+                            Landing Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLanding" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createLanding.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
+                                </a>
+                                <a class="nav-link" href="consultLanding.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
+                        <!-- toggle empresa -->
+                        <a id = "empresas" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
+                            aria-expanded="false" aria-controls="collapseComp">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Empresas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseComp" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
+                                </a>
+                                <a class="nav-link" href="consultComp.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
+                        <!-- toggle perfiles-->
+                        <a id = "perfiles" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                            aria-expanded="false" aria-controls="collapseUsers">
+                            
+                            <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
+                            Perfiles
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseUsers" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="createProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
+                                </a>
+                                <a class="nav-link" href="consultProf.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
+                                </a></nav>
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4"> Landing Page</h1>                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            Información de Landing Page
+                        </div>
+                    </div>
+                    
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header mb-4 text-white colorLandings">
+                                        <i class="fas fa-chart-area mr-1"></i>
+                                        Resumen Landing
+                                    </div>
+                                    <div class="row ml-4 mr-4" >
+                                        <div class="col-12 col-lg-4 mb-2">
+                                            <div class="card">
+                                                <div class="card-header"><h4>Usos Totales landing</h4></div>
+                                                <div class="card-body"><h2 id="visitas">--</h2></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-4 mb-2">
+                                            <div class="card">
+                                                <div class="card-header"><h4>Top país clicks</h4></div>
+                                                <div class="card-body"><h2 id="paisMax">--</h2></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-4 mb-2">
+                                            <div class="card">
+                                                <div class="card-header"><h4>Top origen visitas</h4></div>
+                                                <div class="card-body"><h2 id="navMax">--</h2></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="card mb-4">
+                        <div class="card-header colorLandings"><i class="fas fa-link"></i> Landing Pages</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">                                    
+                                    <label class="font-weight-bold mb-1" for="inputNombre">
+                                        Nombre de la landing page
+                                    </label>                                    
+                                    <input class="form-control py-4" id="inputNombre"/>
+                                </div>
+                                <div class="form-group">                                    
+                                    <label class="font-weight-bold mb-1" for="inputDescripcion">
+                                        Descripción
+                                    </label>                                    
+                                    <input class="form-control py-4" id="inputDescripcion"/>
+                                </div>
+
+                                <label class="font-weight-bold mb-1">
+                                    Escoja su template
+                                </label>     
+                                <div class="radioWrap">
+                                    <div class="btn-group radioBtnGroup btn-group-justified" data-toggle="buttons">
+                                        <label class="btn templateChoice active">
+                                            <div class="choice templateOne"></div>
+                                            <input id = "optionOne" type="radio" name="options" value = "1" checked> 
+                                        </label>
+                                        <label class="btn templateChoice">
+                                            <div class="choice templateTwo"></div>
+                                            <input id = "optionTwo" type="radio" name="options" value = "2"> 
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">                                    
+                                    <label class="font-weight-bold mb-1" for="inputTitulo">
+                                        Título para landing page
+                                    </label>                                    
+                                    <input class="form-control py-4" id="inputTitulo"/>
+                                </div>
+                                <div class="form-group">                                    
+                                    <label class="font-weight-bold mb-1" for="inputTexto">
+                                        Texto 
+                                    </label>                                    
+                                    <input class="form-control py-4" id="inputTexto">                                 
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold mb-1" for="inputImage">
+                                        Imagen
+                                    </label>   
+                                    </script>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputImage"
+                                            aria-describedby="inputImage">
+                                        <label class="custom-file-label" for="inputImage">Seleccione imagen</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                    
+                                    <label class="font-weight-bold mb-1" for="inputFooter">
+                                        Contenido del footer
+                                    </label>                                    
+                                    <input class="form-control py-4" id="inputFooter">                                 
+                                </div>
+                                <div class="form-group" id="selectEmpresa">                                    
+                                    <label class="font-weight-bold mb-1" for="inputEmpresa">
+                                        Empresa
+                                    </label>                                    
+                                    <select class="form-control" id="inputEmpresas">
+                                        <option disabled selected>Seleccione una empresa</option>                                        
+                                    </select>                                   
+                                </div>
+                                <div class="form-group">
+                                    <center>
+                                    <label class="font-weight-bold mb-1" for="ligaCortaCompleta">
+                                        Liga corta para el landing será : 
+                                    </label>
+                                    </center>
+                                    <input class="form-control" id="ligaCortaCompleta" type="text" disabled/>                                    
+                                </div>
+                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <a class="btn btn-primary text-white" id="create_button">
+                                        Guardar
+                                    </a>
+                
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header mb-4 text-white colorLandings">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Visitas liga
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id='ligaVis' class='table table-bordered' width='100%' cellspacing='0'>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha</th>
+                                                        <th>Navegador</th>
+                                                        <th>Ip</th>
+                                                        <th>País</th>                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody id='bodyVisitas'>
+                                                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div> 
+                        </div>
+                </div>
+            </main>
+        </div>
+
+
+    </div>
+    <script src = "js/validacionusuario.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>    
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/statsLanding.js"></script>
+
+</body>
+
+</html>
