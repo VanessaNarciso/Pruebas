@@ -19,10 +19,10 @@ function getLandingsComp() {
   var serverName = 'https://ligascortas.herokuapp.com';
   var getUrl = serverName;
     if(tipo == "0"){
-      getUrl= getUrl+"/landing/";
+      getUrl= getUrl+"/landings/";
       $('#creator_header').text('Empresa');
     }else{
-      getUrl= getUrl+'/landing/'+window.localStorage.empresaId;
+      getUrl= getUrl+'/landings/'+window.localStorage.empresaId;
     }
     console.log(getUrl)
     $.ajax({
@@ -51,7 +51,7 @@ function getLandingsComp() {
                     <td> ${data[i].codeLanding} </td>
                     <td> ${data[i].descripcionLanding}</td>
                     <td>${fechaC}</td>
-                    <td> <a href ="${data[i].ligaLanding}"> ${ligaLanding}</d>
+                    <td> <a href ="${data[i].ligaLanding}"> ${data[i].ligaLanding}</d>
                     <td>${data[i].creator}</td>     
                   </tr>
                 `);              
