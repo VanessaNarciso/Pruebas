@@ -48,7 +48,6 @@ function getLandingsComp() {
                   tabla.append(`                
                   <tr>
                     <td> ${data[i].nombreLanding} </td>
-                    <td> ${data[i].codeLanding} </td>
                     <td> ${data[i].descripcionLanding}</td>
                     <td>${fechaC}</td>
                     <td> <a href ="${data[i].ligaLanding}"> ${data[i].ligaLanding}</d>
