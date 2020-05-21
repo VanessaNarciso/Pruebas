@@ -45,7 +45,7 @@ function getDatosDashboard(){
       $('#NameEmpresa').text(window.localStorage.empresa);
     }
 
-    ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
+    ///////////////////////////////////////////////////////////////////   USOS DIARIOS Y SEMANALES LIGAS
     $.ajax({
         url: urlVis,           
         headers: {
@@ -148,63 +148,7 @@ function getDatosDashboard(){
         }
     })    
 
-    ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS LIGAS
-    $.ajax({
-        url: urlVisNav,           
-        headers: {
-            'Content-Type':'application/json'
-        },
-        method: 'GET',
-        success: function(data){     
-            //console.log("Datos para grafica",data)
-            // Bar Chart Example
-            navs = [];
-            visitas = [];
-            for(var i=0; i<data.length; i++){
-              navs.push(data[i]._id)
-              visitas.push(data[i].visitas)
-            }
-            var ctx = document.getElementById("myBarChart");
-            var myLineChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: navs,
-                datasets: [{
-                  label: "Visitas",
-                  backgroundColor: "rgba(62, 204, 142, 1)",
-                  borderColor: "rgba(62, 204, 142, 1)",
-                  data: visitas,
-                }],
-              },
-              options: {
-                scales: {
-                  xAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                  }],  
-                  yAxes: [{
-                    ticks: {
-                      stacked : true
-                    },
-                    gridLines: {
-                      display: true
-                    }
-                  }],
-                },
-                legend: {
-                  display: false
-                }
-              }
-            });
-  
-        },
-        error: function(error_msg) {
-          alert((error_msg["responseText"]))
-        }
-    })
-
-    //////////////////////////////////////////////////////////////////    TOTAL VISITAS LANDING
+    //////////////////////////////////////////////////////////////////    USOS DIARIOS Y SEMANALES LANDING
 
     $.ajax({
       url: landingVis,         
@@ -307,8 +251,8 @@ function getDatosDashboard(){
         alert((error_msg["responseText"]))
       }
   })   
-    //////////////////////////////////////////////////////////////////    GRAFICA NAVEGADORES
 
+    //////////////////////////////////////////////////////////////////    GRAFICA NAVEGADORES
     $.ajax({
       url: landingVisNav,         
       headers: {
@@ -317,7 +261,6 @@ function getDatosDashboard(){
       method: 'GET',
       success: function(data){     
           //console.log("Datos para grafica",data)
-          // Bar Chart Example
           navs = [];
           visitas = [];
           for(var i=0; i<data.length; i++){
