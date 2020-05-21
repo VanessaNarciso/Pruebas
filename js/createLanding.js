@@ -1,4 +1,5 @@
 let serverName = 'https://ligascortas.herokuapp.com'
+let ms = new Date().getTime();
 
 function getBase64Image(img) {
   var canvas = document.createElement("canvas");
@@ -55,8 +56,7 @@ function loadEmpresas() {
 
 loadEmpresas()
 
-$('#create_button').on('click', function(){    
-    let ms = new Date().getTime();
+$('#create_button').on('click', function(){        
     let code = ms+window.localStorage.uid;
 
     // Esto se mandara a infoLanding
@@ -64,36 +64,42 @@ $('#create_button').on('click', function(){
     let descripcionLanding = $('#inputDescripcion').val();
     let templateChoice = $("input[name='options']:checked").val(); // id = "optionOne", "optionTwo" para los radios
     let ligaLanding = serverName+'/landing/'+templateChoice+'/'+code;
-    let company = window.localStorage.empresaId
+    let company = " "
+    if(window.localStorage.tipo == 0){
+      company =  $('#inputEmpresas').val()
+      console.log("Soy admin" + company)
+    }else{
+      company = window.localStorage.empresaId
+    }
     let uId = window.localStorage.uid
 
     // Esto se mandara a configLanding
     let tituloLanding = $('#inputTitulo').val();
     let textoLanding = $('#inputTexto').val();
     let footerLanding = $('#inputFooter').val();
-    let templateChoice = $("input[name='options']:checked").val();
-    var imageLanding = getBase64Image(document.getElementById("inputImage"));
+    //var imageLanding = getBase64Image(document.getElementById("inputImage"));
 
 
-    infoLanding = {
+    const infoLanding = {
       "nombreLanding": nombreLanding,
       "descripcionLanding": descripcionLanding,      
       "templateChoice" : templateChoice,
+      "codeLanding" : code,
       "ligaLanding" : ligaLanding,
       "empresaLanding" : company,
       "createdBy" : uId,
       "fechaCreacion" : new Date()
     };
 
-    configLanding = {
+    const configLanding = {
       "titulo" : tituloLanding,
       "texto" : textoLanding,
       "footer": footerLanding,
-      "imagen" : imageLanding,
+      //"imagen" : imageLanding,
       "fechaModificacion" : new Date()
     }
   
-    json_to_send_ = {
+    var json_to_send = {
       infoLanding,
       configLanding
     }
@@ -103,16 +109,41 @@ $('#create_button').on('click', function(){
     // hacer el POST a confLanding
 
     $.ajax({
-      url: serverName+'/landing'+templateChoice+'/'+nombreLanding,      
+      url: serverName+'/landing',      
       headers: {
           'Content-Type':'application/json'
       },
       method: 'POST',
       dataType: 'json',
-      data: json_to_send_landing,
+      data: json_to_send,
       success: function(data){
-        // guardar token en localstorage o cookie        
-        window.location = 'consultLanding.html'
+        //////////////////////GUARDAMOS LA LIGA CORTA TAMBIÉN
+        json_to_send2 = {
+          "nombreLiga": 'liga de '+nombreLanding,
+          "codigoLiga" : encode(code),
+          "ligaCorta" : serverName +'/' +encode(code),
+          "ligaOriginal" : ligaLanding,
+          "empresaLiga" : company,
+          "createdBy" : uId,
+          "fechaCreacion" : new Date(),
+          "fechaModificacion" : new Date()
+        };
+        json_to_send2 = JSON.stringify(json_to_send2)
+        $.ajax({
+          url: serverName+'/createLiga',      
+          headers: {
+              'Content-Type':'application/json'
+          },
+          method: 'POST',
+          dataType: 'json',
+          data: json_to_send2,
+          success: function(data){
+            window.location = 'consultLanding.html'
+          },
+          error: function(error_msg) {          
+            alert("Error al crear liga corta, crear manualmente")
+          }
+        })
       },
       error: function(error_msg) {
         alert((error_msg["responseText"]))
@@ -123,6 +154,10 @@ $('#create_button').on('click', function(){
   window.onload = load();
   
   function load() {
-    $('#nombreLanding').val(serverName);
+    
   };
+
+  $('input[type=radio][name=options]').change(function() {
+    $('#ligaCortaCompleta').val(serverName +'/' +encode(ms+window.localStorage.uid));
+});
 
