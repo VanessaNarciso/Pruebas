@@ -1,219 +1,372 @@
-<!DOCTYPE html>
-<html>
+$('#NameEmpresa').text(window.localStorage.empresa);
+idE = window.localStorage.empresaId;
+tipo = window.localStorage.tipo;
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
-        crossorigin="anonymous"></script>
-</head>
+function Last8Days () {
+    var result = [];
+    for (var i=0; i<7; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        d = new Date(d.getFullYear(), d.getMonth(), d.getDate())
+        result.push( d )
+    }
+    return(result.reverse());
+}
 
-<body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html" id = "usertype">Administración</a><button
-            class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
-                class="fas fa-bars"></i></button>
-        <!-- Navbar-->
-        <ul class="navbar-nav ml-auto ml-md-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="profile.html">Ajustes</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Cerrar sesión</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
+function Last7DaysUser () {
+    var result = [];
+    for (var i=0; i<7; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        var dd = d.getDate();
+        var mm = d.getMonth()+1;
+        var yyyy = d.getFullYear();
+        if(dd<10) {dd='0'+dd}
+        if(mm<10) {mm='0'+mm}
+        date = dd+'/'+mm+'/'+yyyy;
+        result.push( date )
+    }
+    return(result.reverse());
+}
 
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Inicio</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Administración</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUrls"
-                            aria-expanded="false" aria-controls="collapseUrls">
-                            <div class="sb-nav-link-icon"><i class="fas fa-link"></i></div>
-                            Ligas cortas
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseUrls" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createUrl.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
-                                </a>
-                                <a class="nav-link" href="consultUrl.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
-                                </a></nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLanding"
-                            aria-expanded="false" aria-controls="collapseLanding">
-                            <div class="sb-nav-link-icon"><i class="fas fa-plane-arrival"></i></div>
-                            Landing Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLanding" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createLanding.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
-                                </a>
-                                <a class="nav-link" href="consultLanding.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
-                                </a></nav>
-                        </div>
-                        <!-- toggle empresa -->
-                        <a id = "empresas" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComp"
-                            aria-expanded="false" aria-controls="collapseComp">
-                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
-                            Empresas
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseComp" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createComp.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
-                                </a>
-                                <a class="nav-link" href="consultComp.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
-                                </a></nav>
-                        </div>
-                        <!-- toggle perfiles-->
-                        <a id = "perfiles" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                            aria-expanded="false" aria-controls="collapseUsers">
-                            
-                            <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
-                            Perfiles
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseUsers" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="createProf.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-plus-square"></i></div>Creación
-                                </a>
-                                <a class="nav-link" href="consultProf.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-glasses"></i></div>Consultas
-                                </a></nav>
-                        </div>
-                        
-                    </div>
-                </div>
-            </nav>
-        </div>
+function getDatosDashboard(){
+  var serverName = 'https://ligascortas.herokuapp.com';
+  if(tipo === "0"){
+    var urlVis = serverName+'/ligasVisitas';
+    var urlVisNav = serverName+'/ligasVisitasNav/';
+    var landingVis = serverName+'/landingsVisitas';
+    var landingVisNav = serverName+'/landingsVisitasNav/';
+    $('#NameEmpresa').text('Administrador');
+  }else{
+    var urlVis = serverName+'/ligasVisitas/'+idE;
+    var urlVisNav = serverName+'/ligasVisitasNav/'+idE;
+    var landingVis = serverName+'/landingsVisitas/'+idE;
+    var landingVisNav = serverName+'/landingsVisitasNav/'+idE;
+    $('#NameEmpresa').text(window.localStorage.empresa);
+  }
+
+    ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
+    $.ajax({
+        url: urlVis,           
+        headers: {
+            'Content-Type':'application/json'
+        },
+        method: 'GET',
+        success: function(data){     
+            //console.log(data)
+            $('#totalesLigas').text(data.length)
+            ///////////////////////////////////////////////////////////////////   HOY CLICS LIGAS EMPRESA
+            now = new Date();                                                   //día de consulta a hora actual
+            hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
+            var clicsHoy = 0;
+            for(var i=0; i<data.length; i++){
+                //console.log("hoy es: ",hoy)
+                //console.log("liga es de: ",new Date(data[i].visita.fecha))
+                if(hoy < new Date(data[i].visita.fecha)){
+                    //console.log("si es de hoy")
+                    clicsHoy = clicsHoy+1;
+                }
+            }
+            $('#ligasHoy').text(clicsHoy)
+            
+            ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
+            const week = Last8Days();
+            console.log("week es: ",week);
+            var diaSemana=0;
+            var contadorDatos=0;
+            var semana = [];
+            var visitasDia=0;
+            data.sort(function(a, b) {
+                return (a.visita.fecha < b.visita.fecha) ? -1 : ((a.visita.fecha > b.visita.fecha) ? 1 : 0);
+            });
+            console.log(data)
+            fechaVis = new Date(data[contadorDatos].visita.fecha);
+            while(fechaVis < week[diaSemana]){
+              contadorDatos+=1;
+              fechaVis = new Date(data[contadorDatos].visita.fecha);
+            }            
+            while(contadorDatos<data.length && diaSemana<7){
+                anterior = week[diaSemana];
+                actual = week[diaSemana+1];
+                fechaVis = new Date(data[contadorDatos].visita.fecha);
+                //console.log(fechaVis)
+                if(fechaVis> anterior && fechaVis < actual){
+                    visitasDia+=1;
+                    contadorDatos+=1;
+                }else{
+                    semana.push(visitasDia);
+                    diaSemana+=1;
+                    visitasDia=0;
+                }                                
+            }            
+            semana[6] = clicsHoy;
+            var ctx = document.getElementById("ligasSemana");
+            var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Last7DaysUser(),
+                datasets: [{
+                label: "Usos",
+                lineTension: 0.3,
+                backgroundColor: "rgba(247, 85, 120, 0.2)",
+                borderColor: "rgba(247, 85, 120, 1)",
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(247, 85, 120, 1)",
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(247, 85, 120, 1)",
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                data: semana,
+                }],
+            },
+            options: {
+                scales: {
+                xAxes: [{
+                    gridLines: {
+                    display: false
+                    },
+                    ticks: {
+                    maxTicksLimit: 7
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                    stacked : true
+                    },
+                    gridLines: {
+                    color: "rgba(0, 0, 0, .125)",
+                    }
+                }],
+                },
+                legend: {
+                display: false
+                }
+            }
+            });
+
+        },
+        error: function(error_msg) {
+          alert((error_msg["responseText"]))
+        }
+    })    
+
+    ///////////////////////////////////////////////////////////////////   GRAFICA DE BARRAS LIGAS
+    $.ajax({
+        url: urlVisNav,           
+        headers: {
+            'Content-Type':'application/json'
+        },
+        method: 'GET',
+        success: function(data){     
+            //console.log("Datos para grafica",data)
+            // Bar Chart Example
+            navs = [];
+            visitas = [];
+            for(var i=0; i<data.length; i++){
+              navs.push(data[i]._id)
+              visitas.push(data[i].visitas)
+            }
+            var ctx = document.getElementById("myBarChart");
+            var myLineChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: navs,
+                datasets: [{
+                  label: "Visitas",
+                  backgroundColor: "rgba(62, 204, 142, 1)",
+                  borderColor: "rgba(62, 204, 142, 1)",
+                  data: visitas,
+                }],
+              },
+              options: {
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                  }],  
+                  yAxes: [{
+                    ticks: {
+                      stacked : true
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                  }],
+                },
+                legend: {
+                  display: false
+                }
+              }
+            });
+  
+        },
+        error: function(error_msg) {
+          alert((error_msg["responseText"]))
+        }
+    })
+
+    //////////////////////////////////////////////////////////////////    TOTAL VISITAS LANDING
+
+    $.ajax({
+      url: landingVis,         
+      headers: {
+          'Content-Type':'application/json'
+      },
+      method: 'GET',
+      success: function(data){     
+          //console.log(data)
+          $('#totalesLandings').text(data.length)
+          ///////////////////////////////////////////////////////////////////   HOY CLICS LIGAS EMPRESA
+          now = new Date();                                                   //día de consulta a hora actual
+          hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
+          var clicsHoy = 0;
+          for(var i=0; i<data.length; i++){
+              if(hoy < new Date(data[i].visita.fecha)){
+                  clicsHoy = clicsHoy+1;
+              }
+          }
+          $('#landingsHoy').text(clicsHoy)
+          
+          ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
+          const week = Last8Days();
+          console.log("week es: ",week);
+          var diaSemana=0;
+          var contadorDatos=0;
+          var semana = [];
+          var visitasDia=0;
+          data.sort(function(a, b) {
+              return (a.visita.fecha < b.visita.fecha) ? -1 : ((a.visita.fecha > b.visita.fecha) ? 1 : 0);
+          });
+          console.log(data)
+          fechaVis = new Date(data[contadorDatos].visita.fecha);
+          while(fechaVis < week[diaSemana]){
+            contadorDatos+=1;
+            fechaVis = new Date(data[contadorDatos].visita.fecha);
+          }            
+          while(contadorDatos<data.length && diaSemana<7){
+              anterior = week[diaSemana];
+              actual = week[diaSemana+1];
+              fechaVis = new Date(data[contadorDatos].visita.fecha);
+              //console.log(fechaVis)
+              if(fechaVis> anterior && fechaVis < actual){
+                  visitasDia+=1;
+                  contadorDatos+=1;
+              }else{
+                  semana.push(visitasDia);
+                  diaSemana+=1;
+                  visitasDia=0;
+              }                                
+          }            
+          semana[6] = clicsHoy;
+          var ctx = document.getElementById("landingsSemana");
+          var myLineChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: Last7DaysUser(),
+              datasets: [{
+              label: "Visitas",
+              lineTension: 0.3,
+              backgroundColor: "rgba(247, 85, 120, 0.2)",
+              borderColor: "rgba(247, 85, 120, 1)",
+              pointRadius: 5,
+              pointBackgroundColor: "rgba(247, 85, 120, 1)",
+              pointBorderColor: "rgba(255,255,255,0.8)",
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(247, 85, 120, 1)",
+              pointHitRadius: 50,
+              pointBorderWidth: 2,
+              data: semana,
+              }],
+          },
+          options: {
+              scales: {
+              xAxes: [{
+                  gridLines: {
+                  display: false
+                  },
+                  ticks: {
+                  maxTicksLimit: 7
+                  }
+              }],
+              yAxes: [{
+                  ticks: {
+                  stacked : true
+                  },
+                  gridLines: {
+                  color: "rgba(0, 0, 0, .125)",
+                  }
+              }],
+              },
+              legend: {
+              display: false
+              }
+          }
+          });
+
+      },
+      error: function(error_msg) {
+        alert((error_msg["responseText"]))
+      }
+  })   
+    //////////////////////////////////////////////////////////////////    GRAFICA DE BARRAS LANDINGS
+
+    $.ajax({
+      url: landingVisNav,         
+      headers: {
+          'Content-Type':'application/json'
+      },
+      method: 'GET',
+      success: function(data){     
+          //console.log("Datos para grafica",data)
+          // Bar Chart Example
+          navs = [];
+          visitas = [];
+          for(var i=0; i<data.length; i++){
+            navs.push(data[i]._id)
+            visitas.push(data[i].visitas)
+          }
+          var ctx = document.getElementById("landingsSemana");
+          var myLineChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: navs,
+              datasets: [{
+                label: "Visitas",
+                backgroundColor: "rgba(62, 204, 142, 1)",
+                borderColor: "rgba(62, 204, 142, 1)",
+                data: visitas,
+              }],
+            },
+            options: {
+              scales: {
+                xAxes: [{
+                  gridLines: {
+                      display: false
+                  }
+                }],  
+                yAxes: [{
+                  ticks: {
+                    stacked : true
+                  },
+                  gridLines: {
+                    display: true
+                  }
+                }],
+              },
+              legend: {
+                display: false
+              }
+            }
+          });
+
+      },
+      error: function(error_msg) {
+        alert((error_msg["responseText"]))
+      }
+  })
+}
 
 
-
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid">
-                    <h1 class="mt-4">Dashboard Inicial</h1>
-                    <h1 id="NameEmpresa" style="color: blue;">Name</h1>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card mb-4">
-                                <div class="card-header mb-4 text-white dairyColor">
-                                    <i class="fas fa-chart-area mr-1"></i>
-                                    Resumen diario
-                                </div>
-                                <div class="row ml-4 mr-4" >
-                                    <div class="col-6 col-lg-6 mb-2">
-                                        <div class="card">
-                                            <div class="card-header"><h4>Usos ligas cortas hoy</h4></div>
-                                            <div class="card-body"><h2 id="ligasHoy">--</h2></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-lg-6 mb-2">
-                                        <div class="card">
-                                            <div class="card-header"><h4>Visitas landing pages hoy</h4></div>
-                                            <div class="card-body"><h2 id="landingsHoy">--</h2></div>
-                                        </div>
-                                    </div>                                    
-                                </div>
-                            </div>                            
-                        </div> 
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card mb-4">
-                                <div class="card-header mb-4 text-white weeklyColor">
-                                    <i class="fas fa-chart-area mr-1"></i>
-                                    Resumen total
-                                </div>
-                                <div class="row ml-4 mr-4" >
-                                    <div class="col-6 col-lg-6 mb-2">
-                                        <div class="card">
-                                            <div class="card-header"><h4>Usos totales ligas cortas</h4></div>
-                                            <div class="card-body"><h2 id="totalesLigas">--</h2></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-lg-6 mb-2">
-                                        <div class="card">
-                                            <div class="card-header"><h4>Visitas totales landing pages</h4></div>
-                                            <div class="card-body"><h2 id="totalesLandings">--</h2></div>
-                                        </div>
-                                    </div>                                    
-                                </div>
-                            </div>                            
-                        </div> 
-                    </div>
-                    <div class="row">                        
-                        <div class="col-xl-6">
-                            <div class="card mb-4 text-white">
-                                <div class="card-header colorLigas"><i class="fas fa-chart-bar mr-1"></i>Usos diarios
-                                    ligas cortas ultima semana</div>
-                                <div class="card-body"><canvas id="ligasSemana" width="100%" height="40"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4 text-white">
-                                <div class="card-header colorLandings"><i class="fas fa-chart-area mr-1"></i>Visitas diarias
-                                    landing pages ultima semana</div>
-                                <div class="card-body"><canvas id="landingsSemana" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card mb-4 text-white">
-                                <div class="card-header colorStats"><i class="fas fa-chart-area mr-1"></i>Origen de visitas de ligas cortas</div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="20"></canvas></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </main>            
-        </div>
-    </div>
-    
-    <script src = "js/validacionusuario.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/logout.js" type="text/javascript" ></script>
-    <script src="js/dashboard.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/datatables-demo.js"></script>
-</body>
-
-</html>
+window.onload = getDatosDashboard;
