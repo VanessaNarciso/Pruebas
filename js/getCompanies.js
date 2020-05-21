@@ -26,11 +26,11 @@ function getCompanies() {
             }
             $('#empresastable').DataTable({
             "language": {
-                "lengthMenu": "Mostrar _MENU_ perfiles por página",
-                "zeroRecords": "No hay perfiles para mostrar",
+                "lengthMenu": "Mostrar _MENU_ empresas por página",
+                "zeroRecords": "No hay empresas para mostrar",
                 "info": "Página _PAGE_ de _PAGES_",
                 "infoEmpty": "",
-                "infoFiltered": "(Buscando en _MAX_ perfiles)"
+                "infoFiltered": "(Buscando en _MAX_ empresas)"
             }
           });
         },               

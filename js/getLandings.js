@@ -36,6 +36,7 @@ function getLandingsComp() {
           let tabla = $("#bodyLandings");          
           for (let i = 0; i < data.length; i++) {
                 fechaC = dateRead(new Date(data[i].fechaCreacion));
+                ligOrg = data[i].ligaLanding.substring(8,serverName.length+20)+'...';
                 /*
                   <th>Nombre</th>
                   th>Id landing</th>
@@ -50,10 +51,10 @@ function getLandingsComp() {
                     <td> ${data[i].nombreLanding} </td>
                     <td> ${data[i].descripcionLanding}</td>
                     <td>${fechaC}</td>
-                    <td> <a href ="${data[i].ligaLanding}"> ${data[i].ligaLanding}</d>
+                    <td> <a href ="${data[i].ligaLanding}"> ${ligOrg}</d>
                     <td>${data[i].creator}</td>     
                   </tr>
-                `);              
+                `);
                 if(i == data.length-1){
                   $('#landingsEmpresa').DataTable({
                     "language": {
