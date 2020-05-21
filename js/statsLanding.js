@@ -161,7 +161,7 @@ $('#create_button').on('click', function(){
     console.log(json_to_send)
 
     $.ajax({
-      url: serverName+'/landings' + landing,      
+      url: serverName+'/landings/' + landing,      
       headers: {
           'Content-Type':'application/json',
           'Authorization' : window.localStorage.token
