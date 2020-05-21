@@ -70,8 +70,7 @@ function getLigasComp() {
 
     /////////////////////////  LLENAR FORM DE LANDING
     $.ajax({
-        // tambien falta esta ruta
-        url: serverName+'/getLanding/'+landing,      
+        url: serverName+'/landings/'+landing,      
         headers: {
             'Content-Type':'application/json'
         },
@@ -91,7 +90,7 @@ function getLigasComp() {
     ///////////////////// LLENAR FORM DE CONFIGLANDING
     $.ajax({
         // tambien falta esta ruta
-        url: serverName+'/getConfigLanding/'+landing,      
+        url: serverName+'/landing/'+landing,      
         headers: {
             'Content-Type':'application/json'
         },
