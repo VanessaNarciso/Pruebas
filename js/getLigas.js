@@ -54,7 +54,7 @@ function getLigasComp() {
                     "language": {
                         "lengthMenu": "Mostrar _MENU_ ligas por página",
                         "zeroRecords": "No hay ligas para mostrar",
-                        "info": "Página _PAGE_ de _PAGES_",
+                        "info": "Mostrando de _START_ a _END_ de un total _TOTAL_ registros",
                         "infoEmpty": "",
                         "infoFiltered": "(Buscando en _MAX_ ligas)"
                     }
