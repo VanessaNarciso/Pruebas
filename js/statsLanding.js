@@ -27,7 +27,7 @@ function encodeCode(code){
 
 function getLigasComp() {    
     $.ajax({
-        // falta ruta visitas/:landing u numvisitas/:landing
+        // falta visitas/:landing u numvisitas/:landing ;;;;;;;;;;;;;;;;;
         url: serverName+'/visitas/'+landing,      
         headers: {
             'Content-Type':'application/json'
@@ -54,11 +54,11 @@ function getLigasComp() {
           }
           $('#landingVis').DataTable({
             "language": {
-                "lengthMenu": "Mostrar _MENU_ ligas por página",
-                "zeroRecords": "No hay ligas para mostrar",
+                "lengthMenu": "Mostrar _MENU_ landing pages por página",
+                "zeroRecords": "No hay landing pages para mostrar",
                 "info": "Página _PAGE_ de _PAGES_",
                 "infoEmpty": "",
-                "infoFiltered": "(Buscando en _MAX_ ligas)"
+                "infoFiltered": "(Buscando en _MAX_ Landing Pages)"
             }
           });
         },
@@ -70,8 +70,7 @@ function getLigasComp() {
 
     /////////////////////////  LLENAR FORM DE LANDING
     $.ajax({
-        // tambien falta esta ruta
-        url: serverName+'/getLanding/'+landing,      
+        url: serverName+'/landings/'+landing,      
         headers: {
             'Content-Type':'application/json'
         },
@@ -90,8 +89,7 @@ function getLigasComp() {
 
     ///////////////////// LLENAR FORM DE CONFIGLANDING
     $.ajax({
-        // tambien falta esta ruta
-        url: serverName+'/getConfigLanding/'+landing,      
+        url: serverName+'/landings/'+landing,      
         headers: {
             'Content-Type':'application/json'
         },
@@ -113,7 +111,7 @@ function getLigasComp() {
 //////////////////////////////////  GUARDAR CAMBIOS   /////////////////////////////////////////////////
 $('#create_button').on('click', function(){        
     let code = ms+window.localStorage.uid;
-
+    //cargar datos de la form de nuevo
     // Esto se mandara a infoLanding
     let nombreLanding = $('#inputNombre').val();
     let descripcionLanding = $('#inputDescripcion').val();
@@ -161,49 +159,25 @@ $('#create_button').on('click', function(){
 
     json_to_send = JSON.stringify(json_to_send)
     console.log(json_to_send)
-    // hacer el POST a confLanding
 
     $.ajax({
-      url: serverName+'/landing',      
+      url: serverName+'/landings/' + landing,      
       headers: {
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          'Authorization' : window.localStorage.token
       },
-      method: 'POST',
+      method: 'PATCH',
       dataType: 'json',
       data: json_to_send,
       success: function(data){
-        //////////////////////GUARDAMOS LA LIGA CORTA TAMBIÉN
-        json_to_send2 = {
-          "nombreLiga": 'liga de '+nombreLanding,
-          "codigoLiga" : encode(code),
-          "ligaCorta" : serverName +'/' +encode(code),
-          "ligaOriginal" : ligaLanding,
-          "empresaLiga" : company,
-          "createdBy" : uId,
-          "fechaCreacion" : new Date(),
-          "fechaModificacion" : new Date()
-        };
-        json_to_send2 = JSON.stringify(json_to_send2)
-        $.ajax({
-          url: serverName+'/createLiga',      
-          headers: {
-              'Content-Type':'application/json'
-          },
-          method: 'POST',
-          dataType: 'json',
-          data: json_to_send2,
-          success: function(data){
-            window.location = 'consultLanding.html'
-          },
-          error: function(error_msg) {          
-            alert("Error al crear liga corta, crear manualmente")
-          }
-        })
+        alert('Landing Page actualizada');
+        window.location = 'consultLanding.html'
       },
       error: function(error_msg) {
         alert((error_msg["responseText"]))
       }
     })
+  
   })
 
 window.onload = getLandingsComp;
