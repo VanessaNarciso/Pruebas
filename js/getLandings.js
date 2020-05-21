@@ -48,7 +48,7 @@ function getLandingsComp() {
                 */                             
                   tabla.append(`                
                   <tr>
-                    <td> ${data[i].nombreLanding} </td>
+                    <td> <a class="nav-link" href="landing.html?id=${data[i]._id}"> ${data[i].nombreLanding} </td>
                     <td> ${data[i].descripcionLanding}</td>
                     <td>${fechaC}</td>
                     <td> <a href ="${data[i].ligaLanding}"> ${ligOrg}</d>
