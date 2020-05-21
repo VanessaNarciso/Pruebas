@@ -139,11 +139,8 @@
                                         <label class="row font-weight-bold mb-1">Domicilio:</label>
                                         <label id="domicilio">Domicilio?</label>
                                         <label class="row font-weight-bold mb-1">País: </label>
-                                        <label  id= "Pais">País</label>
-                                        <label class="row font-weight-bold mb-1">Número de Ligas </label>
-                                        <label  id= "numero_ligas">24</label>
-                                        <label class="row font-weight-bold mb-1">Número de Usuarios </label>
-                                        <label  id= "numero_usuarios">35</label>
+                                        <label  id= "pais">País</label>
+                                        
                                     </div>
                                 </div> 
                             </div> 
@@ -157,7 +154,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id='ligaVis' class='table table-bordered' width='100%' cellspacing='0'>
+                                            <table id='tabla_usuarios' class='table table-bordered' width='100%' cellspacing='0'>
                                                 <thead>
                                                     <tr>
                                                         <th>Nombre</th>
@@ -165,7 +162,7 @@
                                                         <th>Tipo</th>                                                      
                                                     </tr>
                                                 </thead>
-                                                <tbody id='bodyVisitas'>
+                                                <tbody id='bodyUsuarios'>
                                                 
                                                 </tbody>
                                             </table>
@@ -183,7 +180,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id='ligaVis' class='table table-bordered' width='100%' cellspacing='0'>
+                                            <table id='tabla_ligas' class='table table-bordered' width='100%' cellspacing='0'>
                                                 <thead>
                                                     <tr>
                                                         <th>Nombre</th>
@@ -191,7 +188,7 @@
                                                         <th>Liga Original</th>                                                      
                                                     </tr>
                                                 </thead>
-                                                <tbody id='bodyVisitas'>
+                                                <tbody id='bodyLigas'>
                                                 
                                                 </tbody>
                                             </table>
@@ -209,35 +206,34 @@
                                         Nombre de Empresa 
                                     </label>                                    
                                     <input class="form-control py-4" id="inputName" type="url"
-                                        placeholder="Introduzca el nombre de la liga" />
+                                        placeholder="Introduzca el nuevo nombre" />
                                 </div>
                                 <div class="form-group">                                    
-                                    <label class="font-weight-bold mb-1" for="inputURL">
+                                    <label class="font-weight-bold mb-1" for="inputRazon">
                                        Razon Social 
                                     </label>                                    
-                                    <input class="form-control py-4" id="inputURL" type="url"
-                                        placeholder="Introduzca la liga original" />
-                                        <span id="error-messageUrl" style="color: red;"></span>
+                                    <input class="form-control py-4" id="inputRazon" type="url"
+                                        placeholder="Introduzca la nueva razon social" />
                                 </div>
                                 <div class="form-group">                                    
-                                    <label class="font-weight-bold mb-1" for="inputLigaCorta">
+                                    <label class="font-weight-bold mb-1" for="inputDomicilio">
                                         Domicilio
                                     </label>                                    
-                                    <input class="form-control py-4" id="inputLigaCorta" type="url"
-                                        placeholder="Código sin caracteres especiales" />
+                                    <input class="form-control py-4" id="inputDomicilio" type="url"
+                                        placeholder="Nuevo Domicilio" />
                                         <span id="error-messageCode" style="color: red;"></span>
                                 </div>
                                 <div class="form-group">                                    
-                                    <label class="font-weight-bold mb-1" for="inputName">
+                                    <label class="font-weight-bold mb-1" for="inputContacto">
                                         Número de contacto
                                     </label>                                    
-                                    <input class="form-control py-4" id="inputName" type="url"
-                                        placeholder="Introduzca el nombre de la liga" />
+                                    <input class="form-control py-4" id="inputContacto" type="url"
+                                        placeholder="Introduzca el nuevo numero de contacto" />
                                 </div>
                                 
                                  
                                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <a class="btn btn-primary text-white" id="create_button">
+                                    <a class="btn btn-primary text-white" id="save_button">
                                         Guardar
                                     </a>
                                 </div>
@@ -258,7 +254,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="js/statsLiga.js"></script>
+    <script src="js/statsCompany.js"></script>
 
 </body>
 
