@@ -30,20 +30,20 @@ function Last7DaysUser () {
 }
 
 function getDatosDashboard(){
-  var serverName = 'https://ligascortas.herokuapp.com';
-  if(tipo === "0"){
-    var urlVis = serverName+'/ligasVisitas';
-    var urlVisNav = serverName+'/ligasVisitasNav/';
-    //var landingVis = serverName+'/landingVisitas';
-    //var landingVisNav = serverName+'/ligasVisitasNav/';
-    $('#NameEmpresa').text('Administrador');
-  }else{
-    var urlVis = serverName+'/ligasVisitas/'+idE;
-    var urlVisNav = serverName+'/ligasVisitasNav/'+idE;
-    //var landingVis = serverName+'/landingVisitas/'+idE;
-    //var landingVisNav = serverName+'/landingVisitasNav/'+idE;
-    $('#NameEmpresa').text(window.localStorage.empresa);
-  }
+    var serverName = 'https://ligascortas.herokuapp.com';
+    if(tipo === "0"){
+      var urlVis = serverName+'/ligasVisitas';
+      var urlVisNav = serverName+'/ligasVisitasNav/';
+      var landingVis = serverName+'/landingsVisitas';
+      var landingVisNav = serverName+'/landingsVisitasNav/';
+      $('#NameEmpresa').text('Administrador');
+    }else{
+      var urlVis = serverName+'/ligasVisitas/'+idE;
+      var urlVisNav = serverName+'/ligasVisitasNav/'+idE;
+      var landingVis = serverName+'/landingsVisitas/'+idE;
+      var landingVisNav = serverName+'/landingsVisitasNav/'+idE;
+      $('#NameEmpresa').text(window.localStorage.empresa);
+    }
 
     ///////////////////////////////////////////////////////////////////   TOTAL CLICS LIGAS EMPRESA
     $.ajax({
@@ -55,9 +55,8 @@ function getDatosDashboard(){
         success: function(data){     
             //console.log(data)
             $('#totalesLigas').text(data.length)
-            ///////////////////////////////////////////////////////////////////   HOY CLICS LIGAS EMPRESA
-            now = new Date();                                                   //día de consulta a hora actual
-            hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
+            now = new Date();                                                
+            hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());  
             var clicsHoy = 0;
             for(var i=0; i<data.length; i++){
                 //console.log("hoy es: ",hoy)
@@ -68,8 +67,6 @@ function getDatosDashboard(){
                 }
             }
             $('#ligasHoy').text(clicsHoy)
-            
-            ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
             const week = Last8Days();
             console.log("week es: ",week);
             var diaSemana=0;
@@ -217,10 +214,9 @@ function getDatosDashboard(){
       method: 'GET',
       success: function(data){     
           //console.log(data)
-          $('#totalesLanding').text(data.length)
-          ///////////////////////////////////////////////////////////////////   HOY CLICS LIGAS EMPRESA
-          now = new Date();                                                   //día de consulta a hora actual
-          hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //día de consulta a las 00:00
+          $('#totalesLandings').text(data.length)
+          now = new Date();                                                 
+          hoy = new Date(now.getFullYear(), now.getMonth(), now.getDate());   
           var clicsHoy = 0;
           for(var i=0; i<data.length; i++){
               //console.log("hoy es: ",hoy)
@@ -231,8 +227,6 @@ function getDatosDashboard(){
               }
           }
           $('#landingsHoy').text(clicsHoy)
-          
-          ///////////////////////////////////////////////////////////////////   GRAFICA DE AREA
           const week = Last8Days();
           console.log("week es: ",week);
           var diaSemana=0;
@@ -271,13 +265,13 @@ function getDatosDashboard(){
               datasets: [{
               label: "Visitas",
               lineTension: 0.3,
-              backgroundColor: "rgba(247, 85, 120, 0.2)",
-              borderColor: "rgba(247, 85, 120, 1)",
+              backgroundColor: "rgb(2, 117, 216,0.2)",
+              borderColor: "rgb(0, 117, 216,1)", 
               pointRadius: 5,
-              pointBackgroundColor: "rgba(247, 85, 120, 1)",
-              pointBorderColor: "rgba(255,255,255,0.8)",
+              pointBackgroundColor: "rgb(2, 117, 216,1)",
+              pointBorderColor: "rgb(180, 203, 223,0.8)", 
               pointHoverRadius: 5,
-              pointHoverBackgroundColor: "rgba(247, 85, 120, 1)",
+              pointHoverBackgroundColor: "rgb(204, 227, 247,1)",
               pointHitRadius: 50,
               pointBorderWidth: 2,
               data: semana,
@@ -313,7 +307,7 @@ function getDatosDashboard(){
         alert((error_msg["responseText"]))
       }
   })   
-    //////////////////////////////////////////////////////////////////    GRAFICA DE BARRAS LANDINGS
+    //////////////////////////////////////////////////////////////////    GRAFICA NAVEGADORES
 
     $.ajax({
       url: landingVisNav,         
@@ -330,7 +324,7 @@ function getDatosDashboard(){
             navs.push(data[i]._id)
             visitas.push(data[i].visitas)
           }
-          var ctx = document.getElementById("landingsSemana");
+          var ctx = document.getElementById("myBarChart");
           var myLineChart = new Chart(ctx, {
             type: 'bar',
             data: {
